@@ -1,0 +1,132 @@
+body {
+    background-color: #fff;
+    line-height: 1.5;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 124px;
+}
+
+a, a:visited {
+    color: #586f9d;
+    font-style: normal;
+}
+
+nav {
+    background-color: unset;
+    padding: 24px 36px;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    transition: .2s;
+    z-index: 100;
+}
+
+
+nav a {
+    text-align: right;
+    color: black;
+    font-weight: 400;
+    text-decoration: none;
+    transition: .2s;
+    padding: 12px 24px;
+}
+
+nav a:hover {
+    background-color: #959595;
+}
+
+.navscrollcolor {
+    background-color: #4f4f4f;
+    box-shadow: 0px 2px 3px rgba(150, 150, 150, 0.5);
+}
+
+.navscrollcolor a {
+    color: white;
+}
+
+.maincolor {
+    color: #0d5738;
+}
+
+.secondcolor {
+    color: #6cbd5f;
+}
+
+.maincolorback {
+    background-color: #0d5738;
+}
+
+.secondcolorback {
+    background-color: #6cbd5f;
+}
+
+.icon {
+    padding: 16px;
+}
+
+.defaultpadding {
+    padding: 12px 24px;
+}
+
+.defaultmargin {
+    margin: 24px;
+}
+
+.nopadding {
+    padding: 0px !important;
+}
+
+.nomargin {
+    margin: 0px !important;
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+.shadow {
+    box-shadow: 0px 2px 3px rgba(150, 150, 150, 0.5);
+}
+
+input {
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    background-color: #e3e3e3;
+    color: black;
+    /* box-shadow: inset 0px 0px 3px rgba(150, 150, 150, 0.5);
+    border: 1px solid #c1c1c1; */
+}
+
+button, input[type=button] {
+    border: none;
+    padding: 12px 24px;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    transition: .2s;
+    outline: none;
+    cursor: pointer;
+    margin: 0 8px;
+}
+
+button:hover, input[type=button]:hover {
+    background: rgb(217, 217, 217);
+    transform: translateY(-1px);
+    box-shadow: 0px 2px 3px rgba(150, 150, 150, 0.5);
+}
+
+.nobackground {
+    background: unset;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
