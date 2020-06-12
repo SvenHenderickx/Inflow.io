@@ -1,8 +1,41 @@
 $(document).ready(function(){
+
+    // setCookie();
+
+    if(typeof(Cookies.get('app')) == 'undefined'){
+        setCookie();
+    }
+    else{
+        getCookie();
+    }
+
     getProjects();
+
 });
 
-let highestProjectId = 1;
+let currentProject = null;
+
+function setCookie(){
+    Cookies.set('app', JSON.stringify(app));
+}
+
+function getCookie(){
+    var cookieValue = Cookies.get("app")
+    cookieValue = JSON.parse(cookieValue)
+    app = cookieValue;
+    console.log(cookieValue);
+}
+
+function highestProjectId(){
+    let highId = 0;
+    $.each(app.projects, function(i,v){
+        if(highId <= v.id){
+            highId = v.id + 1;
+        }
+    })
+
+    return highId;
+}
 
 let app = {
     projects: [
@@ -55,12 +88,16 @@ let app = {
 
 let templates = {
     blanco: {
+        name: '',
+        contact: '',
+        description: '',
+        phases: [
 
+        ]
     },
     waterfall: {
-            id: 1,
             name: 'Waterfall template',
-            contact: 'Datastreams.io',
+            contact: '',
             description: 'Gemaakt vanuit template',
             phases: [
                 {
@@ -125,26 +162,23 @@ function showProject(){
 
 function showProjectVisual(projectobj){
 
-    let projectTile = "<div>";
-    projectTile += "<p>" + projectobj.name + " - " + projectobj.description +"</p>";
+    let projectTile = '<div>';
+    projectTile += '<p><a href="projects.php?id=' + projectobj.id + '">' + projectobj.name + ' - ' + projectobj.description +'</a></p>';
+    projectTile += '<ul>'
 
-    projectTile += "<ul>"
+    // $.each(projectobj.phases, function(ind, val){
+    //     projectTile += '<li>' + val.name + '</li>'
+    //     projectTile += "<ul>"
+    //
+    //     $.each(val.requests, function(index, value){
+    //
+    //         projectTile += "<li>" + value.name +"</li>"
+    //
+    //     })
+    //     projectTile += "</ul>"
+    // })
 
-    $.each(projectobj.phases, function(ind, val){
-        projectTile += "<li>" + val.name +"</li>"
-
-        projectTile += "<ul>"
-
-        $.each(val.requests, function(index, value){
-
-            projectTile += "<li>" + value.name +"</li>"
-
-        })
-
-        projectTile += "</ul>"
-    })
     projectTile += "</ul>"
-
     projectTile += "</div>"
 
     $('#projects').append(projectTile);
@@ -154,24 +188,20 @@ function createNewProject(){
     let name = $('#projectName').val();
     let desc = $('#projectDescription').val();
 
-
-    highestProjectId++;
-
-    let tempProject = {
-        id: highestProjectId,
-        name: name,
-        description: desc
-    };
-
     if($('#template').is(":checked")){
         tempProject = templates.waterfall;
-        tempProject.id = highestProjectId;
-        tempProject.name += " - " + name;
-        tempProject.description +=  " - " + desc;
     }
+    else{
+        tempProject = templates.blanco;
+    }
+
+    tempProject.id = highestProjectId();
+    tempProject.name = name;
+    tempProject.description = desc;
 
     app.projects.push(tempProject);
     getProjects();
+    setCookie();
 }
 
 function createNewRequest(projectId, phaseId){

@@ -2,3 +2,16 @@ body {
     font-family: 'Oxygen', sans-serif;
     background-color: #F0F3F7;
 }
+
+.projects_wrapper {
+    display: flex;
+}
+
+.project_tile {
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+    margin: 24px 12px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+}
