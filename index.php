@@ -17,6 +17,7 @@
                 <div v-for="project in projects"
                 v-bind:key="project.id"
                 v-bind:project="project"
+                v-bind:teams="teams"
                 is="project"
                 >
                 </div>

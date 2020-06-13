@@ -34,7 +34,7 @@ $(document).ready(function(){
                 {
                     id: 2,
                     name: 'Test 231',
-                    owner: 2,
+                    owner: 1,
                     contact: 1,
                     description: 'andere tekst',
                     phases: [
