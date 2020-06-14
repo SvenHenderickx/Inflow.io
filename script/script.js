@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 });
 
-let currentProject = null;
+let currentProject;
 
 function setCookie(){
     Cookies.set('app', JSON.stringify(app));

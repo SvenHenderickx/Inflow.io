@@ -16,9 +16,9 @@
             <div class="projects_wrapper">
                 <div v-for="project in projects"
                 v-bind:key="project.id"
-                v-bind:project="project"
+                v-bind:project_in="project"
                 v-bind:teams="teams"
-                is="project"
+                is="project_c"
                 >
                 </div>
 

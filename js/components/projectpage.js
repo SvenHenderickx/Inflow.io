@@ -1,6 +1,6 @@
-const project = Vue.component('project', {
+const projectpage = Vue.component('projectpage', {
     props: ['project','teams'],
-    template: '<div class="project_tile"><a :href="url">{{ project.name }}</a><p><b>{{ contact_name }} </b> + {{ team_name }}</p></div>',
+    template: '<div class="project_tile">blablbal{{ project.name }}<p><b>{{ contact_name }} </b> + {{ team_name }}</p></div>',
     computed: {
         contact_name:
         function(){

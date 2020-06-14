@@ -9,22 +9,23 @@
         require_once 'php/header.php'
 
          ?>
+         <script>
+         var x = $(location).attr('search');
+         x = x.substring(4);
+         console.log(x)
 
+         currentProject = x;
+         </script>
     </head>
     <body>
-        <div id="main">
+        <div id="app">
+            <div
+            v-bind:project="getCurrentProject"
+            v-bind:teams="teams"
+            is="projectpage">
 
+            </div>
         </div>
-        <script>
-        $(document).ready(function(){
-            var x = $(location).attr('search');
-            x = x.substring(4);
-            console.log(x)
 
-            console.log(getProject(x));
-
-            currentProject = getProject(x);
-        })
-        </script>
     </body>
 </html>

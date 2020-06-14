@@ -1,3 +1,5 @@
+let currentProject;
+
 $(document).ready(function(){
     const app = new Vue({
         el: '#app',
@@ -77,13 +79,31 @@ $(document).ready(function(){
                     id: 2,
                     name: 'Datastreams.io'
                 }
-            ]
+            ],
+            currentProject: 1
         },
         computed: {
-
+            getCurrentProject:
+            function(){
+                return this.getProject(currentProject);
+            }
         },
         watch: {
 
+        },
+        methods: {
+            getProject:
+            function(projectId){
+                let out;
+                console.log(this.projects)
+                console.log(currentProject)
+                $.each(this.projects, function(i,v){
+                    if(projectId == v.id){
+                        out = v;
+                    }
+                })
+                return out;
+            }
         }
     });
 })
