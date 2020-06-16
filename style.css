@@ -486,6 +486,7 @@ a:link{
 	padding: 24px;
 	font-size: 18px;
 	outline: none;
+    width: 220px;
 }
 
 textarea {
