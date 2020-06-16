@@ -3,6 +3,12 @@
 
 <head>
 	<title></title>
+<<<<<<< HEAD
+	<script src = "./js/vue.js"></script>
+   <link rel="stylesheet" type="text/css" href="style.css" />
+      <link rel="stylesheet" type="text/css" href="data_request_styling.css" />
+            <link rel="stylesheet" type="text/css" href="mike.css" />
+=======
 	<script src="./js/vue.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -10,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="data_request_styling.css" />
 	<script src="app.js"></script>
 	<script src="components/request_detail.js"></script>
+>>>>>>> master
 </head>
 
 <body>
@@ -17,6 +24,18 @@
 	<div id="app">
 		<div id="fases">
 			<div v-for="fase in fases">
+<<<<<<< HEAD
+
+				<div v-for="request in fase.requests">
+				<div id ="deadline">{{request.date}}</div>
+					<div id ="card">
+						<div id = "nameholder">
+							<div id ="circleID">{{request.user.match(/\b(\w)/g).join('')}}</div>
+								<div id ="information">
+									<h3>{{request.user}}</h3>
+									<h5>{{request.team}}</h5>
+								</div>
+=======
 				<p>{{ fase.name }}</p>
 				<div v-for="request in fase.requests">
 					<div v-on:click="showPopUpRequestDetail(request.id)" id="card">
@@ -26,23 +45,65 @@
 								<h3> {{ getUserName(request.user) }}</h3>
 								<h5>{{request.team}}</h5>
 							</div>
+>>>>>>> master
 						</div>
 						<h2>{{request.title}}</h2>
 						<p>{{request.description}}</p>
 						<strong>Gewenste bestandstypes</strong>
+<<<<<<< HEAD
+						<div id = "filetype">{{request.selectedFiletype}}</div>
+						<div id = "stap">Huidige stap</div>
+						<div id = "afwachting">Wachten op antwoord
+							<div id = "actieVan">Vereist actie van Datastreams</div>
+=======
 						<div id="filetype">.PDF</div>
 						<div id="stap">Huidige stap</div>
 						<div id="afwachting">Wachten op antwoord
 							<div id="actieVan">Vereist actie van Datastreams</div>
+>>>>>>> master
 						</div>
 						<div id="quickreminder">Herinnering sturen</div>
 						<div id="quickcancel">Aanvraag annuleren</div>
-
-
 					</div>
+				</div>
 
+								<template v-if= "fase.name === 'definitiefase'">
+				
+				<!-- 	Actie bij mij kaarten -->
+					<div id ="card">
+						<div id = "nameholder">
+							<div id ="circleID">NB</div>
+								<div id ="information">
+									<h3>Noor Broens</h3>
+									<h5>Datastreams</h5>
+								</div>
+						</div>
+						<h2>Back-end landingspage</h2>
+						<p>De code van de landingspage zal worden gebruikt voor de testen uit te voeren voor de snelheid en veiligheid.</p>
+						<div id = "stap3">Huidige stap</div>
+						<div id = "afwachting3">Wachten op antwoord
+							<div id = "actieVan3">Actie bij jou</div>
+						</div>
+						<div id="quickreminder">Data aanleveren</div>
+						<div id="quickcancel">Contract wijzigen</div>
+					</div>
+						<!-- actie compleet bestand downloaden kaart -->
+				<div id ="completedTransfer">
+						<h2 style="color: #4E4E4E">Dummy Data</h2>
+						<div id = "stap" style="color: #B8E2C4" >16-06-2020</div>
+						<div id = "afwachting2" ><a href = "https://www.datastreams.io/wp-content/uploads/2019/03/Datastreams_logo_standard.png">afbeelding.jpg</a>
+							<div id = "actieVan2" >Download bestand</div>
+						</div>	
+					</div>
+				</template>
+
+<<<<<<< HEAD
+
+					<div id = "stap2">Nieuw stap</div>
+=======
 				</div>
 				<div id="stap2">Huidige stap</div>
+>>>>>>> master
 				<button id="aanvraagbtn" v-on:click="openPopup(fase.name)"> <span style="border-style: solid; padding:15px; border-radius: 10px;">DATA AANVRAAG TOEVOEGEN</span></button>
 			</div>
 		</div>
@@ -61,6 +122,41 @@
 		<!-- 		<div id="popup" v-if="showPopupForFase">
 			<div id="popup-form"><button v-on:click="addRequest">ADD</button></div>
 		</div> -->
+<<<<<<< HEAD
+				<div id="popup" v-if="showPopupForFase">
+<div class="modal" id="modalRequest">
+    <button class="close-button" id="close-button"><i class="far fa-times-circle"></i></button>
+
+  <div class="modalHeader">  
+    <div class="userTag">GC</div>
+    <div class="modalTitling">
+      <h2 style="margin-top:5px;">Data aanvraag</h2>
+      <p style="margin-top:5px;">Datastreams project</p>
+    </div>
+  </div>
+    
+    <div class="modal-guts">
+      <label for="data_request_naam">Titel van aanvraag</label>
+      <textarea id="data_request_naam" name="data_request_naam" rows="1" placeholder="Welke data vraag je aan?" class="modalTextarea" v-model="popupData.title"></textarea>
+    
+      <label for="data_request_reden">Reden van aanvraag</label>
+      <textarea id="data_request_reden" name="data_request_naam" rows="3" placeholder="Waarvoor wordt de data gebruikt?" class="modalTextarea" v-model="popupData.description"></textarea>
+      
+      <label for="filetypes" style="display: block;">Gewenste bestandstypes <span style="color:#989898"> optioneel</span></label>
+
+      <button v-for="filetype in filetypes" id="filetypes" class="filetypeInput"
+      v-bind:class="{ selected: filetype === popupData.selectedFiletype }" v-on:click="popupData.selectedFiletype = filetype">{{filetype}}</button>
+
+      <label for="date" style="display: block;">Deadline voor levering <span style="color:#989898"> </span></label>
+      <input style="width:160px;" class="modalTextarea" name="date" placeholder="DD/MM/YYYY" type="date" autocomplete="off" v-model="popupData.date" />
+
+      <button class="programmer-blue-btn" style="margin:24px auto 8px auto;" v-on:click="addRequest">Verstuur aanvraag</button>
+    </div>
+  </div>
+</div>
+		</div>
+	</div>
+=======
 		<div id="popup" v-if="showPopupForFase">
 			<div class="modal" id="modalRequest">
 				<button class="close-button" id="close-button"><i class="far fa-times-circle"></i></button>
@@ -72,6 +168,7 @@
 						<p style="margin-top:5px;">Datastreams project</p>
 					</div>
 				</div>
+>>>>>>> master
 
 				<div class="modal-guts">
 					<label for="data_request_naam">Titel van aanvraag</label>
@@ -95,6 +192,64 @@
 	</div>
 	</div>
 
+<<<<<<< HEAD
+	<script>
+		new Vue({
+			el: '#app', 
+			data: {
+				popup: null,
+				showPopupForFase: null,
+				fases: [
+					{
+						name: "definitiefase",
+						requests: [
+							{
+								title: "Dit is een titel",
+								user:"Goeli Cheng",
+								team: "Team Ananas",
+								filetype: "PDF",
+								description: "Dit is de reden "
+							}
+						]
+					},
+					{
+						name: "ontwerpfase",
+						requests: []
+					}
+					],
+				popupData: {
+					title: null,
+					user: "Goeli Cheng",
+					team: "Team Ananas",
+					description: null,
+					date: null,
+					selectedFiletype: "PNG",
+				},
+				filetypes: ['.PNG', '.JPG', '.SVG', '.PDF']
+			},
+
+			methods:{
+//toevoegen van de data aanvraag kaarten
+				openPopup: function(faseName) {
+					this.showPopupForFase = faseName;
+				},
+				addRequest: function(){
+					const currentFase = this.fases.find(fase => fase.name === this.showPopupForFase);
+					currentFase.requests.push(Object.assign({}, this.popupData));
+					this.showPopupForFase = null;
+					this.popupData.title = null;
+					this.popupData.description = null;
+					this.popupData.date = null;
+					this.popupData.selectedFiletype = "PNG";
+
+					console.log(this.popupData.date);
+
+				},
+				}
+			});
+	</script>
+=======
+>>>>>>> master
 
 </body>
 
