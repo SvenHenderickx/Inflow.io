@@ -18,7 +18,7 @@ const project_c = Vue.component('project_c', {
         }
     },
     watch: {
-        
+
     },
     methods:{
         getTeamObj:
