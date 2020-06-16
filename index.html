@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title></title>
-	<script src = "./js/vue.js"></script>
-   <link rel="stylesheet" type="text/css" href="style.css" />
-      <link rel="stylesheet" type="text/css" href="data_request_styling.css" />
-	  <script src="./js/app.js"></script>
+	<script src="./js/vue.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="data_request_styling.css" />
+	<script src="app.js"></script>
+	<script src="components/request_detail.js"></script>
 </head>
+
 <body>
 
-	<div id ="app">
+	<div id="app">
 		<div id="fases">
 			<div v-for="fase in fases">
 				<p>{{ fase.name }}</p>
 				<div v-for="request in fase.requests">
-					<div id ="card">
-						<div id = "nameholder">
-							<div id ="circleID">GC</div>
-								<div id ="information">
-									<h3>{{request.user}}</h3>
-									<h5>{{request.team}}</h5>
-								</div>
+					<div v-on:click="showPopUpRequestDetail(request.id)" id="card">
+						<div id="nameholder">
+							<div id="circleID">{{ getUserInitials(request.user) }}</div>
+							<div id="information">
+								<h3> {{ getUserName(request.user) }}</h3>
+								<h5>{{request.team}}</h5>
+							</div>
 						</div>
 						<h2>{{request.title}}</h2>
 						<p>{{request.description}}</p>
 						<strong>Gewenste bestandstypes</strong>
-						<div id = "filetype">.PDF</div>
-						<div id = "stap">Huidige stap</div>
-						<div id = "afwachting">Wachten op antwoord
-							<div id = "actieVan">Vereist actie van Datastreams</div>
+						<div id="filetype">.PDF</div>
+						<div id="stap">Huidige stap</div>
+						<div id="afwachting">Wachten op antwoord
+							<div id="actieVan">Vereist actie van Datastreams</div>
 						</div>
 						<div id="quickreminder">Herinnering sturen</div>
 						<div id="quickcancel">Aanvraag annuleren</div>
@@ -37,105 +42,60 @@
 					</div>
 
 				</div>
-					<div id = "stap2">Huidige stap</div>
+				<div id="stap2">Huidige stap</div>
 				<button id="aanvraagbtn" v-on:click="openPopup(fase.name)"> <span style="border-style: solid; padding:15px; border-radius: 10px;">DATA AANVRAAG TOEVOEGEN</span></button>
 			</div>
 		</div>
+		<div
+		v-if="openRequestDetail == true"
+		
+		class="requestdetail_container"
+		>
+			<div
+			class="requestdetail"
+			v-bind:request="getCurrentRequest()"
+			is="request_detail"
+			></div>
+		</div>
 
-<!-- 		<div id="popup" v-if="showPopupForFase">
+		<!-- 		<div id="popup" v-if="showPopupForFase">
 			<div id="popup-form"><button v-on:click="addRequest">ADD</button></div>
 		</div> -->
-				<div id="popup" v-if="showPopupForFase">
-<div class="modal" id="modalRequest">
-    <button class="close-button" id="close-button"><i class="far fa-times-circle"></i></button>
+		<div id="popup" v-if="showPopupForFase">
+			<div class="modal" id="modalRequest">
+				<button class="close-button" id="close-button"><i class="far fa-times-circle"></i></button>
 
-  <div class="modalHeader">
-    <div class="userTag">SH</div>
-    <div class="modalTitling">
-      <h2 style="margin-top:5px;">Data aanvraag</h2>
-      <p style="margin-top:5px;">Datastreams project</p>
-    </div>
-  </div>
+				<div class="modalHeader">
+					<div class="userTag">SH</div>
+					<div class="modalTitling">
+						<h2 style="margin-top:5px;">Data aanvraag</h2>
+						<p style="margin-top:5px;">Datastreams project</p>
+					</div>
+				</div>
 
-    <div class="modal-guts">
-      <label for="data_request_naam">Titel van aanvraag</label>
-      <textarea id="data_request_naam" name="data_request_naam" rows="1" placeholder="Welke data vraag je aan?" class="modalTextarea" ></textarea>
+				<div class="modal-guts">
+					<label for="data_request_naam">Titel van aanvraag</label>
+					<textarea id="data_request_naam" name="data_request_naam" rows="1" placeholder="Welke data vraag je aan?" class="modalTextarea"></textarea>
 
-      <label for="data_request_reden">Reden van aanvraag</label>
-      <textarea id="data_request_reden" name="data_request_naam" rows="3" placeholder="Waarvoor wordt de data gebruikt?" class="modalTextarea" ></textarea>
+					<label for="data_request_reden">Reden van aanvraag</label>
+					<textarea id="data_request_reden" name="data_request_naam" rows="3" placeholder="Waarvoor wordt de data gebruikt?" class="modalTextarea"></textarea>
 
-      <label for="filetypes" style="display: block;">Gewenste bestandstypes <span style="color:#989898"> optioneel</span></label>
-      <input id="filetypes" name="filetypes1" class="filetypeInput" placeholder=".PNG"></input>
-      <input id="filetypes" name="filetypes2" class="filetypeInput" placeholder=".JPG"></input>
-      <input id="filetypes" name="filetypes3" class="filetypeInput" placeholder=".SVG"></input>
+					<label for="filetypes" style="display: block;">Gewenste bestandstypes <span style="color:#989898"> optioneel</span></label>
+					<input id="filetypes" name="filetypes1" class="filetypeInput" placeholder=".PNG"></input>
+					<input id="filetypes" name="filetypes2" class="filetypeInput" placeholder=".JPG"></input>
+					<input id="filetypes" name="filetypes3" class="filetypeInput" placeholder=".SVG"></input>
 
-      <label for="date" style="display: block;">Deadline voor levering <span style="color:#989898"> optioneel</span></label>
-      <input style="width:160px;" class="modalTextarea" name="date" placeholder="DD/MM/YYYY" type="date" autocomplete="off" />
+					<label for="date" style="display: block;">Deadline voor levering <span style="color:#989898"> optioneel</span></label>
+					<input style="width:160px;" class="modalTextarea" name="date" placeholder="DD/MM/YYYY" type="date" autocomplete="off" />
 
-      <button class="programmer-blue-btn" style="margin:24px auto 8px auto;" v-on:click="addRequest">Verstuur aanvraag</button>
-    </div>
-  </div>
-</div>
+					<button class="programmer-blue-btn" style="margin:24px auto 8px auto;" v-on:click="addRequest">Verstuur aanvraag</button>
+				</div>
+			</div>
 		</div>
+	</div>
 	</div>
 
 
-
-	<script>
-		new Vue({
-			el: '#app',
-			data: {
-				message: "Hello Vue.js",
-				counter: 0,
-				popup: null,
-				showPopupForFase: null,
-				fases: [
-					{
-						name: "definitiefase",
-						requests: [
-							{
-								title: "titel",
-								user:"Goeli Cheng",
-								team: "Team Ananas",
-								description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten"
-							}
-						]
-					},
-					{
-						name: "ontwerpfase",
-						requests: [
-							{
-								title: "titel",
-								user: "Tim"
-							},
-							{
-								title: "titel",
-								user: "Jeffrey"
-							}]
-					}
-					]
-			},
-
-			methods:{
-				// greet: function(event){
-				// 	alert (this.message)
-				// }
-				openPopup: function(faseName) {
-					this.showPopupForFase = faseName;
-				},
-				addRequest: function(){
-					const currentFase = this.fases.find(fase => fase.name === this.showPopupForFase);
-					currentFase.requests.push({
-						title: "asas",
-						user: "Terence Koch",
-						team: "ananas",
-						description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten"
-					});
-					this.showPopupForFase = null;
-				}
-				}
-			});
-	</script>
-
 </body>
+
 </html>
