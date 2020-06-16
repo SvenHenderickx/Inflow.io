@@ -1,0 +1,281 @@
+* {
+    font-family: "Oxygen", sans-serif;
+}
+
+/* font styling */
+h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 16px;
+    margin: 4px 0px 16px 0px;
+}
+
+/* Button styling */
+.programmer-blue-btn {
+    background: #32617A;
+    border-radius: 36px;
+    padding: 12px 24px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 23px;
+    /* identical to box height */
+    text-align: center;
+    color: #ffffff;
+    border: none;
+    display: flex;
+    margin-top: 16px;
+}
+
+.red-button {
+    background: white;
+    border-radius: 36px;
+    padding: 9px 21px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 23px;
+    /* identical to box height */
+    text-align: center;
+    color: #FF2F55;
+    border: 3px solid #FF2F55;
+    display: flex;
+    margin-top: 16px;
+}
+
+.inline-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 16px 0px 8px 0px;
+}
+
+/* Modal attributes */
+#pageMask {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.close-button {
+    color: #32617A;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+    padding: 24px 24px 16px 24px;
+    width: 380px;
+    max-width: 100%;
+    z-index: 10;
+    max-height: 800px;
+}
+
+.closed {
+    display: none;
+}
+
+.modal .close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: none;
+    background: none;
+    font-size: 1.3rem;
+}
+
+label {
+    margin-top: 16px;
+}
+
+.userTag {
+    width: 65px;
+    height: 65px;
+    background: #608DA6;
+    color: #32617A;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    line-height: 2.2;
+}
+
+.modalHeader {
+    display: inline-flex;
+}
+
+.modalTitling {
+    margin-left: 16px;
+}
+
+.modalTextarea {
+    display: block;
+    background: #E1E8F0;
+    border-radius: 10px;
+    width: 100%;
+    border: none;
+    resize: none;
+    margin: 8px 0px 16px 0px;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+::placeholder {
+    color: #8DA1B4;
+}
+
+.modal-guts {
+    /* overflow: auto; */
+    padding-top: 16px;
+}
+
+.filetypeInput {
+    display: inline-flex;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 6px;
+    box-sizing: border-box;
+    margin: 0px 2px 2px 2px;
+    border: none;
+    margin: 8px 0px 16px 0px;
+    background: #E1E8F0;
+    width: 65px;
+    text-align: center;
+}
+
+.light-p-titling {
+    color: #454545;
+    margin-bottom: 4px;
+}
+
+.deadline {
+    display: inline-flex;
+    justify-content: center;
+    align-content: space-between;
+    font-size: 16px;
+    border-radius: 25px;
+    font-weight: bold;
+    padding: 6px 11px;
+    background: #000000;
+    color: white;
+}
+
+.far {
+    margin-right: 8px;
+    line-height: 1.3;
+}
+
+.containerCheck input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* File uploader styling */
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer !important;
+  }
+  
+  .filebtn {
+    margin-top: 4px;
+    background: #32617A;
+    color: white;
+    border: none;
+    padding: 32px 80px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+    cursor: pointer !important;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer !important;
+  }
+
+  /* Customize the label (the container) */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid #32617A;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #32617A;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+.readOnly {
+    line-height: 1.5;
+    box-sizing: border-box;
+    padding: 16px;
+}
