@@ -1,6 +1,6 @@
 const project_c = Vue.component('project_c', {
     props: ['project_in','teams'],
-    template: '<div v-on:click="openProject()" class="project_tile"><a :href="url">{{ project_in.name }}</a><p><b>{{ contact_name }} </b> + test {{ team_name }}</p></div>',
+    template: '<div v-on:click="openProject()" class="project_tile"><a :href="url">{{ project_in.name }}</a><p><b>{{ contact_name }} </b> +  {{ team_name }}</p></div>',
     computed: {
         contact_name:
         function(){
@@ -18,7 +18,7 @@ const project_c = Vue.component('project_c', {
         }
     },
     watch: {
-
+        
     },
     methods:{
         getTeamObj:
