@@ -1,4 +1,8 @@
+
+
 $(document).ready(function() {
+
+
     const app = new Vue({
         el: '#app',
         data: {
@@ -14,38 +18,38 @@ $(document).ready(function() {
                     name: "definitiefase",
                     requests: [{
                         id: 1,
-                        title: "Hallo met contract",
+                        title: "Back-end code gezipt.",
+                        reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
+                        forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
                         user: 2,
                         team: 1,
-                        filetypes: "PDF",
+                        filetypes: "ZIP",
                         date: '2020-06-25',
                         description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test",
                         contract: {
-                            text: 'Contract tekst ofzo',
+                            text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
                             is_signed: false
                         }
-                    }]
+                    }
+                ]
                 },
                 {
                     name: "ontwerpfase",
                     requests: [{
-                            id: 2,
-                            title: "Hallo",
-                            user: 3,
-                            team: 1,
-                            filetype: "PDF",
-                            date: '2020-06-25',
-                            description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test"
-                        },
-                        {
-                            id: 3,
-                            title: "Hallo",
-                            user: 3,
-                            team: 1,
-                            filetype: "PDF",
-                            date: '2020-06-25',
-                            description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test"
+                        id: 2,
+                        title: "Back-end code gezipt.",
+                        reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
+                        forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
+                        user: 2,
+                        team: 1,
+                        filetypes: "",
+                        date: '2020-06-25',
+                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test",
+                        contract: {
+                            text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
+                            is_signed: false
                         }
+                    }
                     ]
                 }
             ],
@@ -198,4 +202,5 @@ $(document).ready(function() {
             },
         }
     });
+
 })

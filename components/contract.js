@@ -6,6 +6,7 @@ const contract = Vue.component('contract', {
         <button class="closeButton" v-on:click="closeContract()">X</button>
         <textarea rows="15" columns="10" class="contracttext" v-model="contract.text"></textarea>
         <div>
+            <input type="checkbox" id="checkbox" v-model="contract.is_signed"><label>Contract tekenen</label></br>
             <button class="buttonCta" v-on:click="closeContract()">Opslaan</button>
         </div>
     </div>`,

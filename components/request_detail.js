@@ -4,9 +4,9 @@ const request_detail = Vue.component('request_detail', {
     <div>
         <button class="closeButton" v-on:click="closeDetail()">X</button>
         <input class="inputLikeText title" v-model="request.title"></input>
-        <textarea placeholder="Hier komt de beschrijving van je data aanvraag." rows="3" cols="40" class="inputLikeText normal" v-model="request.description"></textarea>
+        <textarea placeholder="Hier komt de beschrijving van je data aanvraag." rows="3" cols="40" class="inputLikeText normal" v-model="request.reason"></textarea>
         <label>Waar wordt de data voor gebruikt?</label>
-        <textarea placeholder="Hier komt de beschrijving van je data aanvraag." rows="3" cols="40" class="inputLikeText normal" v-model="request.description">
+        <textarea placeholder="Hier komt de beschrijving van je data aanvraag." rows="3" cols="40" class="inputLikeText normal" v-model="request.forWhat">
         </textarea>
         <div class="currentstep_container">
             <div id="afwachting">Wachten op antwoord
@@ -16,8 +16,8 @@ const request_detail = Vue.component('request_detail', {
         </div>
         <label>Deadline</label>
         <input class="dateinput" type="date" v-model="request.date"></input>
-        <label>Gewenste bestandstypes</label>
-        <p>{{ request.filetype }}</p>
+        <label v-if="hasFilePreference()">Gewenste bestandstypes</label>
+        <p v-if="hasFilePreference()">{{ request.filetypes }}</p>
         <aside>
             <div class="buttongroup mainButtons">
                 <button class="primairy">Data aanleveren</button>
@@ -50,6 +50,15 @@ const request_detail = Vue.component('request_detail', {
         hasContract:
         function(){
             return this.request.hasOwnProperty('contract');
+        },
+        hasFilePreference:
+        function(){
+            if(this.request.filetypes.length > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
     }
 });

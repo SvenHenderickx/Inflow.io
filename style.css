@@ -487,3 +487,7 @@ a:link{
 	font-size: 18px;
 	outline: none;
 }
+
+textarea {
+	resize: none;
+}
