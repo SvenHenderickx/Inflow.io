@@ -5,6 +5,7 @@ $(document).ready(function() {
             message: "Hello Vue.js",
             counter: 0,
             popup: null,
+            currentUser: 1,
             showPopupForFase: null,
             openRequestDetail: false,
             requestId: null,
@@ -50,7 +51,7 @@ $(document).ready(function() {
             ],
             popupData: {
                 title: null,
-                user: "Goeli Cheng",
+                user: 2,
                 team: "Team Ananas",
                 description: null,
                 date: null,
