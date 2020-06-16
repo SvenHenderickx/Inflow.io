@@ -15,6 +15,7 @@ $(document).ready(function() {
                         title: "Hallo",
                         user: 2,
                         team: "Team Ananas",
+                        filetype: "PDF",
                         description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test"
                     }]
                 },
@@ -32,6 +33,20 @@ $(document).ready(function() {
                         }
                     ]
                 }
+            ],
+            popupData: {
+                title: null,
+                user: "Goeli Cheng",
+                team: "Team Ananas",
+                description: null,
+                date: null,
+                selectedFiletype: "PNG",
+            },
+            filetypes: [
+                '.PNG',
+                '.JPG',
+                '.SVG',
+                '.PDF'
             ],
             users: [{
                     id: 1,
@@ -56,13 +71,12 @@ $(document).ready(function() {
             },
             addRequest: function() {
                 const currentFase = this.fases.find(fase => fase.name === this.showPopupForFase);
-                currentFase.requests.push({
-                    title: "asas",
-                    user: "Terence Koch",
-                    team: "ananas",
-                    description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten"
-                });
+                currentFase.requests.push(Object.assign({}, this.popupData));
                 this.showPopupForFase = null;
+                this.popupData.title = null;
+                this.popupData.description = null;
+                this.popupData.date = null;
+                this.popupData.selectedFiletype = "PNG";
             },
             getUser: function(id) {
                 let user;
