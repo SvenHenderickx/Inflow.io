@@ -1,179 +1,242 @@
-$(document).ready(function(){
-    getProjects();
-});
+$(document).ready(function() {
 
-let highestProjectId = 1;
+    let highestProjectId = 2;
 
-let app = {
-    projects: [
-        {
-            id: 1,
-            name: 'Test',
-            owner: 1,
-            contact: 2,
-            description: 'andere tekst',
-            phases: [
+    const app = new Vue({
+        el: '#app',
+        data: {
+            projects: [
                 {
                     id: 1,
-                    name: 'Definitiefase',
-                    position: 1,
-                    isdone: true,
-                    requests: [
+                    name: 'Test',
+                    owner: 'Datasteams.io',
+                    contact: 2,
+                    description: 'Dit is de description van test project 1',
+                    phases: [
                         {
-                            name: 'Verkeerstroming',
-                            description: 'Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten.'
+                            id: 1,
+                            name: 'Definitiefase',
+                            position: 1,
+                            isdone: true,
+                            requests: [
+                                {
+                                    name: 'Verkeerstroming',
+                                    description: 'Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten.'
+                                }
+                            ]
+                        },
+                        {
+                            id: 2,
+                            name: 'Ontwerpfase',
+                            position: 2,
+                            isdone: false
+                        },
+                        {
+                            id: 3,
+                            name: 'Bouwfase',
+                            position: 3,
+                            isdone: false
                         }
                     ]
                 },
                 {
                     id: 2,
-                    name: 'Ontwerpfase',
-                    position: 2,
-                    isdone: false
+                    name: 'Test2',
+                    owner: 'Ananas',
+                    contact: 1,
+                    description: 'Dit is de description van test project 2',
+                    phases: [
+                        {
+                            id: 1,
+                            name: 'Definitiefase',
+                            position: 1,
+                            isdone: true,
+                            requests: [
+                                {
+                                    name: 'Verkeerstroming',
+                                    description: 'Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten.'
+                                }
+                            ]
+                        },
+                        {
+                            id: 2,
+                            name: 'Ontwerpfase',
+                            position: 2,
+                            isdone: false
+                        },
+                        {
+                            id: 3,
+                            name: 'Bouwfase',
+                            position: 3,
+                            isdone: false
+                        }
+                    ]
+                }
+            ],
+            templates: [
+                {
+                blanco: {
+                    id: 1,
+                    name: 'Blanco Template',
+                    description: 'Blanco template'
+                },
+                waterfall: {
+                    id: 1,
+                    name: 'Waterfall template',
+                    description: 'Waterfall template',
+                    phases: [
+                        {
+                            id: 1,
+                            name: 'Definitiefase',
+                            position: 1,
+                            isdone: true,
+                            requests: [
+                                {
+                                    name: 'Voorbeeldblok',
+                                    description: 'Voorbeelddesc'
+                                }
+                            ]
+                        },
+                        {
+                            id: 2,
+                            name: 'Ontwerpfase',
+                            position: 2,
+                            isdone: false,
+                            requests: [
+                                {
+                                    name: 'Voorbeeldblok',
+                                    description: 'Voorbeelddesc'
+                                }
+                            ]
+                        },
+                        {
+                            id: 3,
+                            name: 'Bouwfase',
+                            position: 3,
+                            isdone: false,
+                            requests: [
+                                {
+                                    name: 'Voorbeeldblok',
+                                    description: 'Voorbeelddesc'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                scrum: {
+                    id: 1,
+                    name: 'scrum template',
+                    description: 'scrum template',
+                    phases: [
+                        {
+                            id: 1,
+                            name: 'Definitiefase',
+                            position: 1,
+                            requests: [
+                                {
+                                    name: 'Voorbeeldblok',
+                                    description: 'Voorbeelddesc'
+                                }
+                            ]
+                        },
+                        {
+                            id: 2,
+                            name: 'Ontwerpfase',
+                            position: 2,
+                            requests: [
+                                {
+                                    name: 'Voorbeeldblok',
+                                    description: 'Voorbeelddesc'
+                                }
+                            ]
+                        },
+                        {
+                            id: 3,
+                            name: 'Bouwfase',
+                            position: 3,
+                            requests: [
+                                {
+                                    name: 'Voorbeeldblok',
+                                    description: 'Voorbeelddesc'
+                                }
+                            ]
+                        }
+                    ]
+
+
+            },
+            users: [{
+                    id: 1,
+                    name: 'User Ananas',
+                    team_id: 1
+                 },
+                {
+                    id: 2,
+                    name: 'User Datastreams',
+                    team_id: 1
+                }
+            ],
+            teams: [
+                {
+                    id: 1,
+                    name: 'Ananas'
+                },
+                {
+                    id: 2,
+                    name: 'Datastreams.io'
                 }
             ]
-        }
-    ],
-    users: [
-        {
-            id: 1,
-            name: 'Jane Doe',
-            company_id: 1
-        }
-    ],
-    teams: [
-        {
-            id: 1,
-            name: 'Ananas'
+        }]},
+        computed: {
+
         },
-        {
-            id: 2,
-            name: 'Datastreams.io'
-        }
-    ]
-};
+        methods: {
+            redirectTo: function(newLocation) {
+                window.location.href = newLocation;
+            },
+            addProject: function() {
+                let projectName = $('#projectName').val();
+                let projectCompany = $('#projectCompany').val();
+                let projectDesc = $('#projectDesc').val();
+                let projectTemplate = $("input[name='template']:checked").val();
 
-let templates = {
-    blanco: {
+                highestProjectId++;
 
-    },
-    waterfall: {
-            id: 1,
-            name: 'Waterfall template',
-            contact: 'Datastreams.io',
-            description: 'Gemaakt vanuit template',
-            phases: [
-                {
-                    id: 1,
-                    name: 'Definitiefase',
-                    position: 1,
-                    isdone: true,
-                    requests: [
-                        {
-                            name: 'Voorbeeldblok',
-                            description: ''
-                        }
-                    ]
-                },
-                {
-                    id: 2,
-                    name: 'Ontwerpfase',
-                    position: 2,
-                    isdone: false
-                },
-                {
-                    id: 2,
-                    name: 'Bouwfase',
-                    position: 3,
-                    isdone: false
+                let tempProject = {
+                    id: highestProjectId,
+                    name: projectName,
+                    owner: projectCompany,
+                    description: projectDesc,
+                    phases: {}
+                };
+
+                if (projectTemplate === 'waterfall') {
+                    tempProject.phases = this.templates.waterfall
                 }
-            ]
+                else if (projectTemplate === 'scrum') {
+                    tempProject.phases = this.templates.scrum
+                }
+                else {
+                    tempProject.phases = this.templates.blanco
+                }
+
+                this.projects.push(tempProject);
+                console.log(this.projects);
+                this.redirectTo('projects.php');
+            },
+            openProject: function(projectID) {
+                this.redirectTo('index.php' + '?projectID=' + projectID);
+            },
+            changeProjectName: function(projectID, currentName){
+                let newName = prompt("Verander de naam!", currentName);
+                this.projects.name = newName;
+            },
+            deleteProject: function(projectID){
+                this.projects.splice(projectID, 1);
+            },
+            dropdownShow: function(){
+                $('#myDropdown').toggleClass("show");
+            }
     }
-}
-
-function getProjects(){
-    $('#projects').empty();
-
-    $.each(app.projects, function(i, v){
-        showProjectVisual(v);
-    })
-}
-
-function minusSomething(x, y){
-    return x - y;
-}
-
-function getProject(projectId){
-    let project = null;
-    $.each(app.projects, function(i, v){
-        if(v.id == projectId){
-            project = v;
-            return;
-        }
     });
-
-    return project;
-}
-
-function showProject(){
-    let projectId = $('#projectId').val();
-    let projectobj = getProject(projectId);
-
-    showProjectVisual(projectobj);
-
-}
-
-function showProjectVisual(projectobj){
-
-    let projectTile = "<div>";
-    projectTile += "<p>" + projectobj.name + " - " + projectobj.description +"</p>";
-
-    projectTile += "<ul>"
-
-    $.each(projectobj.phases, function(ind, val){
-        projectTile += "<li>" + val.name +"</li>"
-
-        projectTile += "<ul>"
-
-        $.each(val.requests, function(index, value){
-
-            projectTile += "<li>" + value.name +"</li>"
-
-        })
-
-        projectTile += "</ul>"
-    })
-    projectTile += "</ul>"
-
-    projectTile += "</div>"
-
-    $('#projects').append(projectTile);
-}
-
-function createNewProject(){
-    let name = $('#projectName').val();
-    let desc = $('#projectDescription').val();
-
-
-    highestProjectId++;
-
-    let tempProject = {
-        id: highestProjectId,
-        name: name,
-        description: desc
-    };
-
-    if($('#template').is(":checked")){
-        tempProject = templates.waterfall;
-        tempProject.id = highestProjectId;
-        tempProject.name += " - " + name;
-        tempProject.description +=  " - " + desc;
-    }
-
-    app.projects.push(tempProject);
-    getProjects();
-}
-
-function createNewRequest(projectId, phaseId){
-
-}
+});

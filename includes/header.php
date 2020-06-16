@@ -13,3 +13,4 @@
 
 <!-- Custom styles and script -->
 <link rel="stylesheet" type="text/css" href="../style/style.css">
+<script src="../script/script.js"></script>
