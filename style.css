@@ -231,8 +231,53 @@ font-weight: bold;
 }
 
 .requestdetail {
-	min-width: 400px;
-	min-height: 200px;
+	min-width: 700px;
+	min-height: 400px;
 	background-color: white;
 	border-radius: 20px;
+	position: relative;
+	padding: 32px;
+}
+
+.closeButton {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background-color: #32617A;
+	border-radius: 50%;
+	border: none;
+	color: white;
+	font-weight: bold;
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+}
+
+.inputLikeText {
+	border: none;
+	font-size: 22px;
+	outline: none;
+	display: block;
+	margin-bottom: 8px;
+}
+
+.inputLikeText:hover {
+	text-decoration: underline;
+	border: none;
+}
+
+.inputLikeText:active {
+	text-decoration: none;
+	border: none;
+}
+
+.inputLikeText.title {
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.inputLikeText.normal {
+	font-size: 16px;
+	line-height: 20px;
+	margin-bottom: 24px;
 }

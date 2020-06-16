@@ -1,6 +1,6 @@
 const request_detail = Vue.component('request_detail', {
     props: ['request'],
-    template: '<div><input v-model="request.title"></input><button v-on:click="closeDetail()">Close</button></div>',
+    template: '<div><button class="closeButton"  v-on:click="closeDetail()">X</button><input class="inputLikeText title" v-model="request.title"></input><textarea rows="3" cols="40" class="inputLikeText normal" v-model="request.description"></textarea></div>',
     computed: {
 
     },
