@@ -2,45 +2,29 @@ $(document).ready(function() {
     const app = new Vue({
         el: '#app',
         data: {
-            message: "Hello Vue.js",
-            counter: 0,
             popup: null,
             showPopupForFase: null,
             openRequestDetail: false,
             requestId: null,
             fases: [{
                     name: "definitiefase",
-                    requests: [{
-                        id: 1,
-                        title: "Hallo",
-                        user: 2,
-                        team: "Team Ananas",
-                        filetype: "PDF",
-                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test"
-                    }]
+                    requests: []
                 },
                 {
                     name: "ontwerpfase",
-                    requests: [{
-                            id: 2,
-                            title: "titel",
-                            user: 1
-                        },
-                        {
-                            id: 3,
-                            title: "titel",
-                            user: 2
-                        }
+                    requests: [
                     ]
                 }
             ],
             popupData: {
-                title: null,
-                user: "Goeli Cheng",
-                team: "Team Ananas",
-                description: null,
-                date: null,
-                selectedFiletype: "PNG",
+                    id: 0,
+                    title: null,
+                    user: 2,
+                    team: "Team Ananas",
+                    reason: null,
+                    date: null,
+                    forWhat:null,
+                    selectedFiletype: "PNG",
             },
             filetypes: [
                 '.PNG',
@@ -72,11 +56,13 @@ $(document).ready(function() {
             addRequest: function() {
                 const currentFase = this.fases.find(fase => fase.name === this.showPopupForFase);
                 currentFase.requests.push(Object.assign({}, this.popupData));
-                this.showPopupForFase = null;
-                this.popupData.title = null;
-                this.popupData.description = null;
-                this.popupData.date = null;
-                this.popupData.selectedFiletype = "PNG";
+                    this.showPopupForFase = null;
+                    this.popupData.title = null;
+                    this.popupData.reason = null;
+                    this.popupData.forWhat = null;
+                    this.popupData.date = null;
+                    this.popupData.selectedFiletype = "PNG";
+                    this.popupData.id += 1;
             },
             getUser: function(id) {
                 let user;
@@ -110,7 +96,7 @@ $(document).ready(function() {
                         }
                     })
                 })
-
+                
                 return request;
             },
             getCurrentRequest:

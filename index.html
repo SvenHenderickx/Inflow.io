@@ -7,7 +7,6 @@
 	<script src="./js/vue.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<link rel="stylesheet" type="text/css" href="data_request_styling.css" />
-	<link rel="stylesheet" type="text/css" href="mike.css" />
 	<script src="./js/vue.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -25,6 +24,7 @@
 			<div v-for="fase in fases">
 				<p>{{ fase.name }}</p>
 				<div v-for="request in fase.requests">
+									<div id ="deadline">{{request.date}}</div>
 					<div v-on:click="showPopUpRequestDetail(request.id)" id="card">
 						<div id="nameholder">
 							<div id="circleID">{{ getUserInitials(request.user) }}</div>
@@ -34,7 +34,8 @@
 							</div>
 						</div>
 						<h2>{{request.title}}</h2>
-						<p>{{request.description}}</p>
+						<p>{{request.reason}}</p>
+						<p>{{request.forWhat}}</p>
 						<strong>Gewenste bestandstypes</strong>
 						<div id="filetype">{{request.selectedFiletype}}</div>
 						<div id="stap">Huidige stap</div>
@@ -101,7 +102,10 @@
 					<textarea id="data_request_naam" name="data_request_naam" rows="1" placeholder="Welke data vraag je aan?" class="modalTextarea" v-model="popupData.title"></textarea>
 
 					<label for="data_request_reden">Reden van aanvraag</label>
-					<textarea id="data_request_reden" name="data_request_naam" rows="3" placeholder="Waarvoor wordt de data gebruikt?" class="modalTextarea" v-model="popupData.description"></textarea>
+      				<textarea id="data_request_reden" name="data_request_naam" rows="3" placeholder="Waarvoor wordt de data gebruikt?" class="modalTextarea" v-model="popupData.reason"></textarea>
+
+      				<label for="data_request_reden">Waar wordt de data voor gebruikt</label>
+					<textarea id="data_request_reden" name="data_request_naam" rows="3" placeholder="Waarvoor wordt de data gebruikt?" class="modalTextarea" v-model="popupData.forWhat"></textarea>
 
 					<label for="filetypes" style="display: block;">Gewenste bestandstypes <span style="color:#989898"> optioneel</span></label>
 
