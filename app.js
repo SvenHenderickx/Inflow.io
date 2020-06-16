@@ -194,7 +194,7 @@ $(document).ready(function() {
             getCurrentContract:
             function(){
                 return this.getContract(this.requestId);
-            }
+            },
         }
     });
 })
