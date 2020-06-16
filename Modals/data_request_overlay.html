@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/2e10d94825.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="data_request_styling.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="data_request.js"></script>
+  <title>Data request overlay</title>
+</head>
+
+<body>
+
+  <div id="pageMask">
+
+    <!-- ************************
+     ** MODAL DATA REQUEST **
+     ************************ -->
+
+    <div class="modal" id="modalRequest">
+      <button class="close-button" id="close-button"><i class="far fa-times-circle"></i></button>
+
+      <div class="modalHeader">
+        <div class="userTag">SH</div>
+        <div class="modalTitling">
+          <h2 style="margin-top:5px;">Data aanvraag</h2>
+          <p style="margin-top:5px;">Datastreams project</p>
+        </div>
+      </div>
+
+      <div class="modal-guts">
+        <label for="data_request_naam">Titel van aanvraag</label>
+        <textarea id="data_request_naam" name="data_request_naam" rows="1" placeholder="Welke data vraag je aan?"
+          class="modalTextarea"></textarea>
+
+        <label for="data_request_reden">Reden van aanvraag</label>
+        <textarea id="data_request_reden" name="data_request_naam" rows="3"
+          placeholder="Waarvoor wordt de data gebruikt?" class="modalTextarea"></textarea>
+
+        <label for="filetypes" style="display: block;">Gewenste bestandstypes <span style="color:#989898">
+            optioneel</span></label>
+        <input id="filetypes" name="filetypes1" class="filetypeInput" placeholder=".PNG"></input>
+        <input id="filetypes" name="filetypes2" class="filetypeInput" placeholder=".JPG"></input>
+        <input id="filetypes" name="filetypes3" class="filetypeInput" placeholder=".SVG"></input>
+
+        <label for="date" style="display: block;">Deadline voor levering <span style="color:#989898">
+            optioneel</span></label>
+        <input style="width:160px;" class="modalTextarea" name="date" placeholder="DD/MM/YYYY" type="date"
+          autocomplete="off" />
+
+        <button class="programmer-blue-btn" style="margin:24px auto 8px auto;">Verstuur aanvraag</button>
+      </div>
+    </div>
+
+  <!-- ************************
+     ** MODAL DATA RECEIVE **
+     ************************ -->
+  <div class="modal" id="modalReceive">
+    <button class="close-button" id="close-button-rec"><i class="far fa-times-circle"></i></button>
+
+    <div class="modalHeader">
+      <div class="userTag">DS</div>
+      <div class="modalTitling">
+        <h2 style="margin-top:5px;">Data versturen</h2>
+        <p style="margin-top:5px;">Datastreams project</p>
+      </div>
+    </div>
+
+    <div class="modal-guts">
+      <p class="light-p-titling">Welke data ze willen ontvangen</p>
+      <p>Back-end code gezipt.</p>
+
+      <p class="light-p-titling">Waarom willen ze deze data</p>
+      <p>Dit willen ze gebruiken om te onderzoeken hoe snel en veilig het is.</p>
+
+      <p class="light-p-titling">Wat gaan ze met de data doen</p>
+      <p>Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het
+        gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.</p>
+
+      <p class="light-p-titling">Deadline data ontvangen</p>
+      <div class="deadline" style="display: table;"><i class="far fa-clock"></i>15 juni</div>
+
+      <div class="inline-buttons">
+        <button id="accept-request" class="red-button">Afwijzen</button>
+        <button id="decline-request" class="programmer-blue-btn">Ik ga akkoord</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- *******************
+     ** MODAL SEND DATA **
+     ******************** -->
+  <div class="modal" id="modalSend">
+    <button class="close-button" id="close-button-send"><i class="far fa-times-circle"></i></button>
+
+    <div class="modalHeader">
+      <div class="userTag">DS</div>
+      <div class="modalTitling">
+        <h2 style="margin-top:5px;">Data versturen</h2>
+        <p style="margin-top:5px;">Datastreams project</p>
+      </div>
+    </div>
+
+    <div class="modal-guts">
+      <p>Gewenst bestandstype:</p>
+      <div class="deadline" style="background: #32617A;">.ZIP</div>
+
+      <label for="date" style="display: block;">Toegangankelijk tot: <span style="color:#989898">
+          optioneel</span></label>
+      <input style="width:160px;" class="modalTextarea" name="date" placeholder="DD/MM/YYYY" type="date"
+        autocomplete="off" />
+
+      <div style="cursor: pointer">
+        <label for="upload" style="display: block;">Upload data</label>
+
+        <div class="upload-btn-wrapper">
+          <button class="filebtn"><i class="fas fa-plus" style="font-size: 48px"></i></button>
+          <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload bestand">
+        </div>
+      </div>
+
+      <label for="upload" style="display: block;">Wachtwoord instellen</label>
+      <input class="modalTextarea" name="date" placeholder="Vul wachtwoord in" type="password" />
+
+      <div containerCheck>
+
+        <label class="container">Digitaal contract
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="container">Ik ga akkoord met de voorwaarden
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label>
+
+        <button class="programmer-blue-btn" style="margin:24px auto 8px auto;">Verstuur aanvraag</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ************************
+     ** ALGEMENE VOORWAARDEN **
+     ********************** -->
+  <div class="modal" id="modalTerms">
+      <button class="close-button" id="close-button-terms"><i class="far fa-times-circle"></i></button>
+    
+      <div class="modalHeader">  
+        <div class="userTag">DS</div>
+        <div class="modalTitling">
+          <h2 style="margin-top:5px;">Data versturen</h2>
+          <p style="margin-top:5px;">Datastreams project</p>
+        </div>
+      </div>
+ 
+     <div class="modal-guts">
+       <h2>Algemene voorwaarden</h2>
+       <textarea id="terms" name="terms" rows="14" readonly="true" class="readOnly modalTextarea">
+Op deze pagina vindt u de algemene voorwaarden van dataproject.io, zoals deze beschikbaar is gesteld door dataproject.io. In deze algemene voorwaarden geven wij aan onder welk voorbehoud wij de informatie op onze website aan u aanbieden. Het gebruik van de informatie op deze website is gratis zolang u deze informatie niet kopieert, verspreidt of op een andere manier gebruikt of misbruikt. U mag de informatie op deze website alleen hergebruiken volgens de regelingen van het dwingend recht. Uw data dat wordt doorgestuurd via deze website is veilig tegen alle</textarea>
+      </div>
+    </div>
+
+  <!--***********************
+     ** DIGITAAL CONTRACT **
+     ********************* -->
+  <div class="modal" id="modalContract">
+      <button class="close-button" id="close-button-contract"><i class="far fa-times-circle"></i></button>
+    
+      <div class="modalHeader">  
+        <div class="userTag">DS</div>
+        <div class="modalTitling">
+          <h2 style="margin-top:5px;">Data versturen</h2>
+          <p style="margin-top:5px;">Datastreams project</p>
+        </div>
+      </div>
+ 
+     <div class="modal-guts">
+       <h2>Digitaal contract</h2>
+       <textarea id="terms" name="terms" rows="5" readonly="true" class=" readOnly modalTextarea">
+De door datastreams gedeelde data is prive en zal niet op een onveilige manier worden opgeslagen op een harde schijf, SSD, usb-stick of andere opslag. De data mag niet met een 2de of 3de partij worden gedeelt.</textarea>
+      </div>
+    </div>
+
+  </div>
+  <div style="margin-left: 24px; z-index: -1;">
+    <button id="open-request-modal" class="programmer-blue-btn">Open data aanvraag modal</button>
+    <button id="open-receive-modal" class="programmer-blue-btn">Open verstuur data modal 1</button>
+    <button id="open-send-modal" class="programmer-blue-btn">Open verstuur data modal 2</button>
+    <button id="open-terms-modal" class="programmer-blue-btn">Open algemene voorwaarden</button>
+    <button id="open-contract-modal" class="programmer-blue-btn">Open digitaal contract</button>
+  </div>
+</body>
+
+</html>

@@ -90,6 +90,7 @@ p{
 	box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
 	border-radius: 20px;
     transition: .2s;
+	cursor: pointer;
 }
 
 #card:hover {
@@ -346,19 +347,28 @@ a:link{
 	background-color: rgba(224, 231, 240, .5);
 }
 
-.requestdetail {
-	min-width: 700px;
-	min-height: 400px;
+.popupbox {
 	background-color: white;
 	border-radius: 20px;
 	position: relative;
 	padding: 32px;
+	margin: 24px;
+	box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+}
+
+.requestdetail {
+	min-width: 820px;
+	min-height: 500px;
+	background-image: url('style/guy_folder.png');
+	background-position: bottom -160px right 50px;
+    background-repeat: no-repeat;
+	background-size: 350px;
 }
 
 .closeButton {
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 32px;
+	right: 32px;
 	background-color: #32617A;
 	border-radius: 50%;
 	border: none;
@@ -367,6 +377,12 @@ a:link{
 	width: 30px;
 	height: 30px;
 	font-size: 20px;
+	outline: none;
+	cursor: pointer;
+}
+
+.closeButton:hover {
+	background-color: #587d90;
 }
 
 .inputLikeText {
@@ -404,4 +420,74 @@ a:link{
 	line-height: 20px;
 	display: block;
 	margin-bottom: 8px;
+}
+
+.dateinput {
+	color:white;
+	background: #FF2F55;
+	border-radius: 100px;
+	font-family: Oxygen;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	border: none;
+	padding: 8px 16px;
+	outline: none;
+}
+
+.requestdetail aside{
+	position: absolute;
+	top: 94px;
+	right: 32px;
+}
+
+.requestdetail aside .buttongroup {
+	display: flex;
+	flex-direction: column;
+}
+
+.requestdetail aside .buttongroup button, .buttonCta {
+	width: 200px;
+	height: 40px;
+
+	background: #E1E8F0;
+	border-radius: 20px;
+	color: #32617A;
+	border: none;
+	margin: 8px;
+	font-weight: bold;
+	font-size: 16px;
+	outline: none;
+	cursor: pointer;
+}
+
+.requestdetail aside .buttongroup button:hover {
+	background: #becdde;
+}
+
+.requestdetail aside .buttongroup button.primairy, .buttonCta {
+	background: #32617A;
+	color: #E1E8F0;
+}
+
+.requestdetail aside .buttongroup button.primairy:hover, .buttonCta:hover {
+	background: #517e95;
+}
+
+.currentstep_container {
+	width: 350px;
+	margin-bottom: 32px;
+}
+
+.contracttext {
+	background: #E1E8F0;
+	border-radius: 20px;
+	border: none;
+	padding: 24px;
+	font-size: 18px;
+	outline: none;
+}
+
+textarea {
+	resize: none;
 }

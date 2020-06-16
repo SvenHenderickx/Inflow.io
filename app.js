@@ -1,42 +1,61 @@
+
+
 $(document).ready(function() {
+
+
     const app = new Vue({
         el: '#app',
         data: {
             message: "Hello Vue.js",
             counter: 0,
             popup: null,
+            currentUser: 1,
             showPopupForFase: null,
             openRequestDetail: false,
             requestId: null,
+            showContract: false,
             fases: [{
                     name: "definitiefase",
                     requests: [{
                         id: 1,
-                        title: "Hallo",
+                        title: "Back-end code gezipt.",
+                        reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
+                        forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
                         user: 2,
-                        team: "Team Ananas",
-                        filetype: "PDF",
-                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test"
-                    }]
+                        team: 1,
+                        filetypes: "ZIP",
+                        date: '2020-06-25',
+                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test",
+                        contract: {
+                            text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
+                            is_signed: false
+                        }
+                    }
+                ]
                 },
                 {
                     name: "ontwerpfase",
                     requests: [{
-                            id: 2,
-                            title: "titel",
-                            user: 1
-                        },
-                        {
-                            id: 3,
-                            title: "titel",
-                            user: 2
+                        id: 2,
+                        title: "Back-end code gezipt.",
+                        reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
+                        forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
+                        user: 2,
+                        team: 1,
+                        filetypes: "",
+                        date: '2020-06-25',
+                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test",
+                        contract: {
+                            text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
+                            is_signed: false
                         }
+                    }
                     ]
                 }
             ],
             popupData: {
                 title: null,
-                user: "Goeli Cheng",
+                user: 2,
                 team: "Team Ananas",
                 description: null,
                 date: null,
@@ -50,15 +69,28 @@ $(document).ready(function() {
             ],
             users: [{
                     id: 1,
-                    name: 'David Widlak'
+                    name: 'David Widlak',
+                    team: 2
                 },
                 {
                     id: 2,
-                    name: 'Goeli Cheng'
+                    name: 'Goeli Cheng',
+                    team: 1
                 },
                 {
                     id: 3,
-                    name: 'Sven Henderickx'
+                    name: 'Sven Henderickx',
+                    team: 1
+                }
+            ],
+            teams: [
+                {
+                    id: 1,
+                    name: "Team Ananas"
+                },
+                {
+                    id: 2,
+                    name: "Datastreams.io"
                 }
             ]
         },
@@ -126,8 +158,49 @@ $(document).ready(function() {
             closeDetail:
             function(){
                 this.openRequestDetail = false;
+                this.openContract = false;
                 this.requestId = null;
-            }
+            },
+            getUsersTeam:
+            function(userId){
+                let user = this.getUser(userId);
+                return this.getTeamName(user.team);
+            },
+            getTeam:
+            function(id) {
+                let team;
+                $.each(this.teams, function(i, v) {
+                    if (id == v.id) {
+                        team = v;
+                        return;
+                    }
+                })
+
+                return team;
+            },
+            getTeamName:
+            function(id){
+                return this.getTeam(id).name;
+            },
+            getContract:
+            function(requestId){
+                let contract;
+                $.each(this.fases, function(i, v) {
+                    $.each(this.requests, function(ix, va){
+                        if(va.id == requestId){
+                            contract = va.contract;
+                            return;
+                        }
+                    })
+                })
+
+                return contract;
+            },
+            getCurrentContract:
+            function(){
+                return this.getContract(this.requestId);
+            },
         }
     });
+
 })
