@@ -5,12 +5,14 @@
 	<script src = "./js/vue.js"></script>
    <link rel="stylesheet" type="text/css" href="style.css" />
       <link rel="stylesheet" type="text/css" href="data_request_styling.css" />
+	  <script src="./js/app.js"></script>
 </head>
 <body>
 
-	<div id ="app">		
+	<div id ="app">
 		<div id="fases">
 			<div v-for="fase in fases">
+				<p>{{ fase.name }}</p>
 				<div v-for="request in fase.requests">
 					<div id ="card">
 						<div id = "nameholder">
@@ -39,7 +41,7 @@
 				<button id="aanvraagbtn" v-on:click="openPopup(fase.name)"> <span style="border-style: solid; padding:15px; border-radius: 10px;">DATA AANVRAAG TOEVOEGEN</span></button>
 			</div>
 		</div>
-		
+
 <!-- 		<div id="popup" v-if="showPopupForFase">
 			<div id="popup-form"><button v-on:click="addRequest">ADD</button></div>
 		</div> -->
@@ -47,21 +49,21 @@
 <div class="modal" id="modalRequest">
     <button class="close-button" id="close-button"><i class="far fa-times-circle"></i></button>
 
-  <div class="modalHeader">  
+  <div class="modalHeader">
     <div class="userTag">SH</div>
     <div class="modalTitling">
       <h2 style="margin-top:5px;">Data aanvraag</h2>
       <p style="margin-top:5px;">Datastreams project</p>
     </div>
   </div>
-    
+
     <div class="modal-guts">
       <label for="data_request_naam">Titel van aanvraag</label>
       <textarea id="data_request_naam" name="data_request_naam" rows="1" placeholder="Welke data vraag je aan?" class="modalTextarea" ></textarea>
-    
+
       <label for="data_request_reden">Reden van aanvraag</label>
       <textarea id="data_request_reden" name="data_request_naam" rows="3" placeholder="Waarvoor wordt de data gebruikt?" class="modalTextarea" ></textarea>
-      
+
       <label for="filetypes" style="display: block;">Gewenste bestandstypes <span style="color:#989898"> optioneel</span></label>
       <input id="filetypes" name="filetypes1" class="filetypeInput" placeholder=".PNG"></input>
       <input id="filetypes" name="filetypes2" class="filetypeInput" placeholder=".JPG"></input>
@@ -81,7 +83,7 @@
 
 	<script>
 		new Vue({
-			el: '#app', 
+			el: '#app',
 			data: {
 				message: "Hello Vue.js",
 				counter: 0,
