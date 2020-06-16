@@ -8,28 +8,42 @@ $(document).ready(function() {
             showPopupForFase: null,
             openRequestDetail: false,
             requestId: null,
+            showContract: false,
             fases: [{
                     name: "definitiefase",
                     requests: [{
                         id: 1,
-                        title: "Hallo",
+                        title: "Hallo met contract",
                         user: 2,
-                        team: "Team Ananas",
-                        filetype: "PDF",
-                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test"
+                        team: 1,
+                        filetypes: "PDF",
+                        date: '2020-06-25',
+                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test",
+                        contract: {
+                            text: 'Contract tekst ofzo',
+                            is_signed: false
+                        }
                     }]
                 },
                 {
                     name: "ontwerpfase",
                     requests: [{
                             id: 2,
-                            title: "titel",
-                            user: 1
+                            title: "Hallo",
+                            user: 3,
+                            team: 1,
+                            filetype: "PDF",
+                            date: '2020-06-25',
+                            description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test"
                         },
                         {
                             id: 3,
-                            title: "titel",
-                            user: 2
+                            title: "Hallo",
+                            user: 3,
+                            team: 1,
+                            filetype: "PDF",
+                            date: '2020-06-25',
+                            description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test"
                         }
                     ]
                 }
@@ -50,15 +64,28 @@ $(document).ready(function() {
             ],
             users: [{
                     id: 1,
-                    name: 'David Widlak'
+                    name: 'David Widlak',
+                    team: 2
                 },
                 {
                     id: 2,
-                    name: 'Goeli Cheng'
+                    name: 'Goeli Cheng',
+                    team: 1
                 },
                 {
                     id: 3,
-                    name: 'Sven Henderickx'
+                    name: 'Sven Henderickx',
+                    team: 1
+                }
+            ],
+            teams: [
+                {
+                    id: 1,
+                    name: "Team Ananas"
+                },
+                {
+                    id: 2,
+                    name: "Datastreams.io"
                 }
             ]
         },
@@ -126,7 +153,47 @@ $(document).ready(function() {
             closeDetail:
             function(){
                 this.openRequestDetail = false;
+                this.openContract = false;
                 this.requestId = null;
+            },
+            getUsersTeam:
+            function(userId){
+                let user = this.getUser(userId);
+                return this.getTeamName(user.team);
+            },
+            getTeam:
+            function(id) {
+                let team;
+                $.each(this.teams, function(i, v) {
+                    if (id == v.id) {
+                        team = v;
+                        return;
+                    }
+                })
+
+                return team;
+            },
+            getTeamName:
+            function(id){
+                return this.getTeam(id).name;
+            },
+            getContract:
+            function(requestId){
+                let contract;
+                $.each(this.fases, function(i, v) {
+                    $.each(this.requests, function(ix, va){
+                        if(va.id == requestId){
+                            contract = va.contract;
+                            return;
+                        }
+                    })
+                })
+
+                return contract;
+            },
+            getCurrentContract:
+            function(){
+                return this.getContract(this.requestId);
             }
         }
     });

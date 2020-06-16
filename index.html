@@ -15,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="data_request_styling.css" />
 	<script src="app.js"></script>
 	<script src="components/request_detail.js"></script>
+	<script src="components/contract.js"></script>
 
 </head>
 
@@ -30,7 +31,7 @@
 							<div id="circleID">{{ getUserInitials(request.user) }}</div>
 							<div id="information">
 								<h3> {{ getUserName(request.user) }}</h3>
-								<h5>{{request.team}}</h5>
+								<h5>{{ getUsersTeam(request.user) }}</h5>
 							</div>
 						</div>
 						<h2>{{request.title}}</h2>
@@ -80,8 +81,15 @@
 				<button id="aanvraagbtn" v-on:click="openPopup(fase.name)"> <span style="border-style: solid; padding:15px; border-radius: 10px;">DATA AANVRAAG TOEVOEGEN</span></button>
 			</div>
 		</div>
+
 		<div v-if="openRequestDetail == true" class="requestdetail_container">
-			<div class="requestdetail" v-bind:request="getCurrentRequest()" is="request_detail"></div>
+			<div class="popupbox requestdetail" v-bind:request="getCurrentRequest()" is="request_detail"></div>
+			<div
+		    v-if="showContract"
+			v-bind:contract="getCurrentContract()"
+		    is="contract"
+			class="popupbox">
+		    </div>
 		</div>
 
 		<div id="popup" v-if="showPopupForFase">
