@@ -59,6 +59,7 @@
                     <div class="titleproject">Nieuw project</div>
                 </div>
                 <div class="hoverborder"></div>
+                <div class="project invis"></div>
             </div>
         </div>
     </body>
