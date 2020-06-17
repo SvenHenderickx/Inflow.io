@@ -57,11 +57,11 @@
       </div>
     </div>
 
-  <!-- ************************
-     ** MODAL DATA RECEIVE **
-     ************************ -->
-  <div class="modal" id="modalReceive">
-    <button class="close-button" id="close-button-rec"><i class="far fa-times-circle"></i></button>
+  <!-- *********************
+     ** MODAL SEND DATA 1 **
+     *********************** -->
+  <div class="modal" id="modalSendStatic">
+    <button class="close-button" id="close-button-sendst"><i class="far fa-times-circle"></i></button>
 
     <div class="modalHeader">
       <div class="userTag">DS</div>
@@ -94,7 +94,7 @@
 
   <!-- *******************
      ** MODAL SEND DATA **
-     ******************** -->
+     ********************* -->
   <div class="modal" id="modalSend">
     <button class="close-button" id="close-button-send"><i class="far fa-times-circle"></i></button>
 
@@ -125,7 +125,7 @@
       </div>
 
       <label for="upload" style="display: block;">Wachtwoord instellen</label>
-      <input class="modalTextarea" name="date" placeholder="Vul wachtwoord in" type="password" />
+      <input class="modalTextarea" name="date" placeholder="Vul hier het wachtwoord in..." type="password" />
 
       <div containerCheck>
 
@@ -187,13 +187,52 @@ De door datastreams gedeelde data is prive en zal niet op een onveilige manier w
     </div>
 
   </div>
-  <div style="margin-left: 24px; z-index: -1;">
-    <button id="open-request-modal" class="programmer-blue-btn">Open data aanvraag modal</button>
-    <button id="open-receive-modal" class="programmer-blue-btn">Open verstuur data modal 1</button>
-    <button id="open-send-modal" class="programmer-blue-btn">Open verstuur data modal 2</button>
-    <button id="open-terms-modal" class="programmer-blue-btn">Open algemene voorwaarden</button>
-    <button id="open-contract-modal" class="programmer-blue-btn">Open digitaal contract</button>
-  </div>
-</body>
 
+
+  <!--***********************
+     ** DATA ONTVANGEN v2? **
+     ********************* -->
+<div class="modal" id="modalReceive">
+  <button class="close-button" id="close-button-rec"><i class="far fa-times-circle"></i></button>
+
+  <div class="modalHeader">
+    <div class="userTag">DS</div>
+    <div class="modalTitling">
+      <h2 style="margin-top:5px;">Data ontvangen</h2>
+      <p style="margin-top:5px;">Datastreams project</p>
+    </div>
+  </div>
+
+  <div class="modal-guts">
+    <p class="light-p-titling">Welke data ze willen ontvangen</p>
+    <p>Data van het aantal rode Fiat auto’s die 
+      in 2019 allemaal in Duitsland door rood reden</p>
+
+    <label for="upload" style="display: block;">Wachtwoord</label>
+    <input class="modalTextarea" name="date" placeholder="Vul hier het wachtwoord in..." type="password" />
+
+    <p class="light-p-titling">Verloopt op</p>
+    <div class="deadline" style="display: table;"><i class="far fa-clock"></i>15 juni</div>
+
+    
+    <label class="container">Ik ga akkoord met het contract
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <div class="inline-buttons">
+      <button id="decline-request" class="programmer-blue-btn">Ontvang data</button>
+    </div>
+  </div>
+</div>
+
+<div style="margin-left: 24px; z-index: -1;">
+  <button id="open-request-modal" class="programmer-blue-btn">Open data aanvraag modal</button>
+  <button id="open-sendst-modal" class="programmer-blue-btn">Open verstuur data modal 1</button>
+  <button id="open-send-modal" class="programmer-blue-btn">Open verstuur data modal 2</button>
+  <button id="open-terms-modal" class="programmer-blue-btn">Open algemene voorwaarden</button>
+  <button id="open-contract-modal" class="programmer-blue-btn">Open digitaal contract</button>
+  <button id="open-receive-modal" class="programmer-blue-btn">Open ontvang data modal</button>
+</div>
+</body>
 </html>
