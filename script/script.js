@@ -38,39 +38,6 @@ $(document).ready(function() {
                             isdone: false
                         }
                     ]
-                },
-                {
-                    id: 2,
-                    name: 'Test2',
-                    owner: 'Ananas',
-                    contact: 1,
-                    description: 'Dit is de description van test project 2',
-                    phases: [
-                        {
-                            id: 1,
-                            name: 'Definitiefase',
-                            position: 1,
-                            isdone: true,
-                            requests: [
-                                {
-                                    name: 'Verkeerstroming',
-                                    description: 'Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten.'
-                                }
-                            ]
-                        },
-                        {
-                            id: 2,
-                            name: 'Ontwerpfase',
-                            position: 2,
-                            isdone: false
-                        },
-                        {
-                            id: 3,
-                            name: 'Bouwfase',
-                            position: 3,
-                            isdone: false
-                        }
-                    ]
                 }
             ],
             templates: [
