@@ -41,13 +41,6 @@ const modal_dataversturen = Vue.component('modal_dataversturen', {
   computed: {},
   watch: {},
   methods: {
-      hasAgreed:
-      function(){
-          return hasAgreed = true; //show next modal
-      },
-      cancelDelivery:
-      function(){
-        this.$root.closeDataVersturenPopUp();
-      }
+
   }
 });
