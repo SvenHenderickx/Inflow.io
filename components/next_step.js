@@ -35,7 +35,7 @@ const next_step = Vue.component('next_step', {
                     id: 3,
                     desc: 'ALles klaar alleen nog accepteren',
                     in: 'Data accepteren',
-                    out: 'Data gestuurd'
+                    out: 'Accepteer voorwaarden'
                 },
                 {
                     id: 4,

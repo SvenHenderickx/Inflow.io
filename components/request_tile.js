@@ -10,7 +10,7 @@ const request_tile = Vue.component('request_tile', {
                 <h5>{{ getUsersTeam(request.user) }}</h5>
             </div>
         </div>
-        <p>{{ request.date }}</p>
+        <div class="deadline" style="display: table;"><i class="far fa-clock"></i>{{ request.date }}</div>
         <h2>{{ request.title }}</h2>
         <p>{{ request.reason }}</p>
         <strong>Gewenste bestandstypes</strong>

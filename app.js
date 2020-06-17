@@ -14,9 +14,10 @@ $(document).ready(function() {
             openRequestDetail: false,
             requestId: null,
             openDataVersturenId: null,
-            showContract: false,
-            openDataOntvangen: false,
             openDataVersturen: false,
+            showContract: false,
+            showContractId: null,
+            openDataOntvangen: false,
             openDataOntvangenRequestId: null,
             openDataOntvangenContract: false,
             openDataOntvangenContractRequestId: null,
@@ -62,7 +63,7 @@ $(document).ready(function() {
                         date: '2020-06-25',
                         hasContract: true,
                         contract: {
-                            text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
+                            text: '',
                             is_signed: false
                         },
                         file: {
@@ -234,13 +235,33 @@ $(document).ready(function() {
             },
             openDataOntvangenContractPopUp:
             function(id){
-                this.openDataOntvangenContHerinneringractRequestId = id;
+                this.openDataOntvangenContractRequestId = id;
                 this.openDataOntvangenContract = true;
             },
             closeDataOntvangenContractPopUp:
             function(){
                 this.openDataOntvangenContractRequestId = null;
                 this.openDataOntvangenContract = false;
+            },
+            openDataVersturenPopUp:
+            function(requestId){
+                this.openDataVersturenId = requestId;
+                this.openDataVersturen = true;
+            },
+            closeDataVersturenPopUp:
+            function(requestId){
+                this.openDataVersturenId = null;
+                this.openDataVersturen = false;
+            },
+            showContractPopUp:
+            function(requestId){
+                this.showContract = true;
+                this.showContractId = requestId;
+            },
+            closeContractPopUp:
+            function(requestId){
+                this.showContract = false;
+                this.showContractId = null;
             }
         }
     });

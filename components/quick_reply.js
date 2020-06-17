@@ -107,13 +107,25 @@ const quick_reply = Vue.component('quick_reply', {
         },
         primaryButton:
         function(){
-            if(this.request.status == 3){
-                console.log('check status 3')
+            let done = false;
+            if(this.request.status == 3 && !this.request.origin_you){
+                done = true;
                 this.$root.openDataOntvangenPopUp(this.request.id);
             }
-            else{
+
+            if(this.request.status == 2 && this.request.origin_you){
+                done = true;
+                this.$root.openDataVersturenPopUp(this.request.id);
+
+            }
+
+            if(!done){
                 this.request.status++;
             }
+        },
+        secondaryButton:
+        function(){
+            
         }
     }
 });

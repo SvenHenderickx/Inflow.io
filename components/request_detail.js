@@ -20,9 +20,7 @@ const request_detail = Vue.component('request_detail', {
         <p v-if="hasFilePreference()">{{ request.filetypes }}</p>
         <aside>
             <div class="buttongroup mainButtons">
-                <button class="primairy">Data aanleveren</button>
-                <button class="">Reageren in chat</button>
-                <button v-if="hasContract()" v-on:click="openContract(request.id)" class="">Contract inzien</button>
+                <button v-if="hasContract()" v-on:click="openContract(request.id)" class="primairy">Contract inzien</button>
             </div>
             <div class="buttongroup">
                 <label v-if="request.status < 4">Snelle actie</label>
@@ -47,7 +45,7 @@ const request_detail = Vue.component('request_detail', {
         },
         openContract:
         function(id){
-            this.$parent.showContract = true;
+            this.$parent.showContractPopUp(this.request.id);
         },
         hasContract:
         function(){

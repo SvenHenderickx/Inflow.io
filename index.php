@@ -46,31 +46,7 @@
 				<template v-if="fase.name === 'definitiefase'">
 
 					<!-- 	Actie bij mij kaarten -->
-					<div id="card">
-						<div id="nameholder">
-							<div id="circleID">NB</div>
-							<div id="information">
-								<h3>Noor Broens</h3>
-								<h5>Datastreams</h5>
-							</div>
-						</div>
-						<h2>Back-end landingspage</h2>
-						<p>De code van de landingspage zal worden gebruikt voor de testen uit te voeren voor de snelheid en veiligheid.</p>
-						<div id="stap3">Huidige stap</div>
-						<div id="afwachting3">Wachten op antwoord
-							<div id="actieVan3">Actie bij jou</div>
-						</div>
-						n</div>
-						<div id="quickcancel">Contract wijzigen</div><div id="quickreminder">Data aanleveren
-					</div>
-					<!-- actie compleet bestand downloaden kaart -->
-					<div id="completedTransfer">
-						<h2 style="color: #4E4E4E">Dummy Data</h2>
-						<div id="stap" style="color: #B8E2C4">16-06-2020</div>
-						<div id="afwachting2"><a href="https://www.datastreams.io/wp-content/uploads/2019/03/Datastreams_logo_standard.png">afbeelding.jpg</a>
-							<div id="actieVan2">Download bestand</div>
-						</div>
-					</div>
+
 				</template>
 				<div id="stap2">Nieuw stap</div>
 				<button id="aanvraagbtn" v-on:click="openPopup(fase.name)"> <span style="border-style: solid; padding:15px; border-radius: 10px;">DATA AANVRAAG TOEVOEGEN</span></button>
@@ -81,11 +57,11 @@
 			<div class="popupbox requestdetail" v-bind:request="getCurrentRequest()" is="request_detail"></div>
 			<div
 		    v-if="showContract"
-			v-bind:contract="getCurrentContract()"
+			v-bind:request="getRequest(showContractId)"
 		    is="contract"
 			class="popupbox">
 		    </div>
-		</div>
+		</div> -->
 
 		<!-- MODALS -->
 
@@ -142,6 +118,13 @@
 	<div
 		v-bind:request="getRequest(openDataVersturenId)"
 		is="modal_dataversturen">
+		</div>
+		<div
+		v-if="showContract"
+		v-bind:request="getRequest(showContractId)"
+		is="contract"
+		class="popupbox">
+		</div>
 		</div>
 	</div>
 </div>

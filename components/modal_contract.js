@@ -6,7 +6,7 @@ const modal_contract = Vue.component('modal_contract', {
 
        <div class="modal-guts">
          <h2>Digitaal contract</h2>
-         <textarea rows="20" col="20" v-model="request.contract.text" class=" readOnly modalTextarea"></textarea>
+         <textarea rows="20" col="20" v-model="request.contract.text" class="modalTextarea" readonly="true" ></textarea>
         </div>
 
         <div class="inline-buttons">
