@@ -16,38 +16,26 @@
 	<script src="app.js"></script>
 	<script src="components/request_detail.js"></script>
 	<script src="components/contract.js"></script>
+	<script src="components/request_tile.js"></script>
+	<script src="components/next_step.js"></script>
+	<script src="components/quick_reply.js"></script>
+	<script src="components/modal_dataontvangen.js"></script>
 
 </head>
 
 <body>
 
 	<div id="app">
+		
 		<div id="fases">
 			<div v-for="fase in fases">
 				<p>{{ fase.name }}</p>
-				<div v-for="request in fase.requests">
-									<div id ="deadline">{{request.date}}</div>
-					<div v-on:click="showPopUpRequestDetail(request.id)" id="card">
-						<div id="nameholder">
-							<div id="circleID">{{ getUserInitials(request.user) }}</div>
-							<div id="information">
-								<h3> {{ getUserName(request.user) }}</h3>
-								<h5>{{ getUsersTeam(request.user) }}</h5>
-							</div>
-						</div>
-						<h2>{{request.title}}</h2>
-						<p>{{request.reason}}</p>
-						<!-- <p>{{request.forWhat}}</p> -->
-						<strong>Gewenste bestandstypes</strong>
-						<div id="filetype">{{request.selectedFiletype}}</div>
-						<div id="stap">Huidige stap</div>
-						<div id="afwachting">Wachten op antwoord
-							<div id="actieVan">Vereist actie van Datastreams</div>
+				<div
+				v-for="request in fase.requests"
+				v-bind:key="request.id"
+				v-bind:request="request"
+				is="request_tile">
 
-						</div>
-						<div id="quickreminder">Herinnering sturen</div>
-						<div id="quickcancel">Aanvraag annuleren</div>
-					</div>
 				</div>
 
 				<template v-if="fase.name === 'definitiefase'">
@@ -94,6 +82,10 @@
 		    </div>
 		</div>
 
+		<!-- MODALS -->
+
+		 <!-- Data aanvraag -->
+
 		<div id="popup" v-if="showPopupForFase">
 			<div class="modal" id="modalRequest">
 				<button class="close-button" id="close-button"><i class="far fa-times-circle"></i></button>
@@ -127,6 +119,17 @@
 				</div>
 			</div>
 	</div>
+
+	<!-- data ontvangen -->
+
+	<div v-if="openDataOntvangen" class="modal" id="modalReceive">
+		<div
+		v-bind:request="getRequest(openDataOntvangenRequestId)"
+		is="modal_dataontvangen">
+		</div>
+	</div>
+
+
 </div>
 
 </body>

@@ -14,10 +14,38 @@ $(document).ready(function() {
             openRequestDetail: false,
             requestId: null,
             showContract: false,
+            openDataOntvangen: false,
+            openDataOntvangenRequestId: null,
             fases: [{
                     name: "definitiefase",
                     requests: [{
                         id: 1,
+                        user: 2,
+                        origin_you: false,
+                        team: 1,
+                        status: 1,
+                        title: "Back-end code gezipt.",
+                        reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
+                        forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
+                        filetypes: "ZIP",
+                        date: '2020-06-25',
+                        contract: {
+                            text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
+                            is_signed: false
+                        },
+                        file: {
+                            url: 'whatever.jpg',
+                            name: 'Whatever',
+                            password: '',
+                            date: '2020-06-21'
+                        }
+                    }
+                ]
+                },
+                {
+                    name: "ontwerpfase",
+                    requests: [{
+                        id: 2,
                         user: 2,
                         origin_you: true,
                         team: 1,
@@ -35,26 +63,7 @@ $(document).ready(function() {
                             url: 'whatever.jpg',
                             name: 'Whatever',
                             password: '',
-                            deadline: '2020-06-25'
-                        }
-                    }
-                ]
-                },
-                {
-                    name: "ontwerpfase",
-                    requests: [{
-                        id: 2,
-                        title: "Back-end code gezipt.",
-                        reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
-                        forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
-                        user: 2,
-                        team: 1,
-                        filetypes: "",
-                        date: '2020-06-25',
-                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test",
-                        contract: {
-                            text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
-                            is_signed: false
+                            date: '2020-06-25'
                         }
                     }
                     ]
@@ -98,24 +107,6 @@ $(document).ready(function() {
                 {
                     id: 2,
                     name: "Datastreams.io"
-                }
-            ],
-            status: [
-                {
-                    id: 1,
-                    desc: 'reageren op aanvraag',
-                    in: 'Wachten op antwoord',
-                    out: 'Antwoorden'
-                },
-                {
-                    id: 2,
-                    desc: 'Sturen van data',
-                    in: 'Data aanleveren',
-                    out: 'Wachten op data'
-                },
-                {
-                    id: 3,
-                    desc: 'Aanvraag klaar en mogelijk om te downloaden'
                 }
             ]
         },
@@ -225,6 +216,16 @@ $(document).ready(function() {
             function(){
                 return this.getContract(this.requestId);
             },
+            openDataOntvangenPopUp:
+            function(id){
+                this.openDataOntvangenRequestId = id;
+                this.openDataOntvangen = true;
+            },
+            closeDataOntvangenPopUp:
+            function(){
+                this.openDataOntvangenRequestId = null;
+                this.openDataOntvangen = false;
+            }
         }
     });
 

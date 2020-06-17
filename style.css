@@ -441,15 +441,15 @@ a:link{
 	right: 32px;
 }
 
-.requestdetail aside .buttongroup {
+.buttongroup {
 	display: flex;
 	flex-direction: column;
+	max-width: 200px;
 }
 
-.requestdetail aside .buttongroup button, .buttonCta {
+.buttongroup button, .buttonCta {
 	width: 200px;
 	height: 40px;
-
 	background: #E1E8F0;
 	border-radius: 20px;
 	color: #32617A;
@@ -461,16 +461,16 @@ a:link{
 	cursor: pointer;
 }
 
-.requestdetail aside .buttongroup button:hover {
+.buttongroup button:hover {
 	background: #becdde;
 }
 
-.requestdetail aside .buttongroup button.primairy, .buttonCta {
+.buttongroup button.primairy, .buttonCta {
 	background: #32617A;
 	color: #E1E8F0;
 }
 
-.requestdetail aside .buttongroup button.primairy:hover, .buttonCta:hover {
+.buttongroup button.primairy:hover, .buttonCta:hover {
 	background: #517e95;
 }
 
@@ -491,4 +491,8 @@ a:link{
 
 textarea {
 	resize: none;
+}
+
+.next_step {
+	max-width: 340px;
 }
