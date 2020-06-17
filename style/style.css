@@ -46,6 +46,12 @@ p {
     margin-left: 900px;
 }
 
+.emptyImage {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 900px;
+}
+
 .watenwie {
     display: flex;
     justify-content: space-between;
