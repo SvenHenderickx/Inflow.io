@@ -50,7 +50,9 @@ body{
 #fases {
 	display:flex;
 justify-content: space-evenly;
-
+	transform: translateY(-40px);
+/*	font-weight: bold;
+	font-size: 24px;*/
 }
 
 h2{
@@ -79,12 +81,11 @@ p{
 #card{
 
 	max-width: 350px;
-	max-height: auto;
 	padding:10px;
 	padding-left:20px;
 	padding-right:20px;
 	/* Datastreams - White */
-	margin-top:20px;
+	margin-top:30px;
 	background: #FFFFFF;
 	/* Shadow Button Datastreams */
 	box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
@@ -283,7 +284,7 @@ color:white;
 font-weight: bold;
 }
 
-#quickcancel{
+#quickcancel {
 
 margin-top:20px;
 text-align: center;
@@ -295,6 +296,7 @@ font-weight: bold;
 
 #deadline{
 position:absolute;
+z-index:1;
 	width: 110px;
 height: 29px;
 transform: translate(230px,-12px);
@@ -381,8 +383,31 @@ a:link{
 	cursor: pointer;
 }
 
+
+
 .closeButton:hover {
 	background-color: #587d90;
+}
+
+.closereq{
+	position: absolute;
+	top: 32px;
+	right: 32px;
+	background-color: #32617A;
+	border-radius: 50%;
+	border: none;
+	color: white;
+	font-weight: bold;
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+}
+
+.closereq:hover{
+background-color: #587d90;
 }
 
 .inputLikeText {
@@ -491,4 +516,62 @@ a:link{
 
 textarea {
 	resize: none;
+}
+
+#tijdlijnholder{
+	display:flex;
+
+
+}
+
+#tijdlijn{
+  border-radius: 17px 17px 0px 0px;
+  margin-top:100px;
+  margin-left:350px;
+  width: 580px;
+  height: 36px;
+  border-style: solid solid none;
+  border-image-source: linear-gradient(90deg, rgb(128,187,0), rgb(58,179,229));
+  border-image-slice: 1;
+}
+
+#tijdlijnlocked{
+  	border-radius: 17px 17px 0px 0px;
+  	margin-top:100px;
+  	width: 580px;
+  	height: 36px;
+  	border-style: dashed dashed  none;
+	border-color: #FF2F55;
+
+}
+
+.material-icons{
+	position:absolute;
+	height:30px;
+	width:30px;
+	border-radius: 50%;
+	border-style: solid;
+	text-align: center;
+	line-height: 30px;
+	background-color:white;
+	margin-left:220px;
+	transform: translate(65px, -20px);
+	border-color:#80BB00;
+	color:#80BB00;
+
+}
+
+
+
+#tijdlijnbol{
+	position:absolute;
+	height:10px;
+	width:10px;
+	border-radius: 50%;
+	border-style: solid;
+	color:#80BB00;
+	background: #80BB00;
+	margin-left: -9px;
+    margin-top: 25px
+	
 }

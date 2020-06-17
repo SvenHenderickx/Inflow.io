@@ -8,6 +8,8 @@
 	<script src="./js/vue.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<link rel="stylesheet" type="text/css" href="data_request_styling.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 	<script src="./js/vue.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -20,11 +22,18 @@
 </head>
 
 <body>
+	<div id="tijdlijnholder">
+			<div id = "tijdlijn"><div id= "tijdlijnbol"></div><span class="material-icons">check</span></div>
+			<div id = "tijdlijnlocked"><div id= "tijdlijnbol" style = "color:#3BB3E5; background-color: #3BB3E5"> </div>
+			<span class="material-icons" style = "color:black; border-color:black;	transform: translate(55px, -20px);">lock</span>	
+			<div id= "tijdlijnbol" style = "margin-left:574px; 	border-color: #FF2F55; background-color:#FF2F55;"></div>
+	</div>
+	</div>
 
 	<div id="app">
 		<div id="fases">
 			<div v-for="fase in fases">
-				<p>{{ fase.name }}</p>
+				<div id ="fases" style = "font-weight: bold; font-size:24px;">{{ fase.name }}</div>
 				<div v-for="request in fase.requests">
 									<div id ="deadline">{{request.date}}</div>
 					<div v-on:click="showPopUpRequestDetail(request.id)" id="card">
@@ -37,7 +46,6 @@
 						</div>
 						<h2>{{request.title}}</h2>
 						<p>{{request.reason}}</p>
-						<!-- <p>{{request.forWhat}}</p> -->
 						<strong>Gewenste bestandstypes</strong>
 						<div id="filetype">{{request.selectedFiletype}}</div>
 						<div id="stap">Huidige stap</div>
@@ -46,12 +54,10 @@
 
 						</div>
 						<div id="quickreminder">Herinnering sturen</div>
-						<div id="quickcancel">Aanvraag annuleren</div>
+						<div id="quickcancel" v-on:click.stop="deleteRequest(request)">Aanvraag annuleren</div>
 					</div>
 				</div>
-
-				<template v-if="fase.name === 'definitiefase'">
-
+				<template v-if="fase.name === 'Definitiefase'">
 					<!-- 	Actie bij mij kaarten -->
 					<div id="card">
 						<div id="nameholder">
@@ -105,8 +111,9 @@
 						<p style="margin-top:5px;">Datastreams project</p>
 					</div>
 				</div>
-
+		<div class = "closereq" v-on:click="closePopup">x</div>
 				<div class="modal-guts">
+
 					<label for="data_request_naam">Titel van aanvraag</label>
 					<textarea id="data_request_naam" name="data_request_naam" rows="1" placeholder="Welke data vraag je aan?" class="modalTextarea" v-model="popupData.title"></textarea>
 

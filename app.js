@@ -6,8 +6,6 @@ $(document).ready(function() {
     const app = new Vue({
         el: '#app',
         data: {
-            message: "Hello Vue.js",
-            counter: 0,
             popup: null,
             currentUser: 1,
             showPopupForFase: null,
@@ -15,34 +13,31 @@ $(document).ready(function() {
             requestId: null,
             showContract: false,
             fases: [{
-                    name: "definitiefase",
-                    requests: [{
+                    name: "Definitiefase",
+                    requests: 
+                    [
+                    {
                         id: 1,
-                        user: 2,
-                        origin_you: true,
-                        team: 1,
-                        status: 1,
                         title: "Back-end code gezipt.",
                         reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
                         forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
+                        user: 2,
+                        team: 1,
                         filetypes: "ZIP",
                         date: '2020-06-25',
+                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test",
                         contract: {
                             text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
                             is_signed: false
-                        },
-                        file: {
-                            url: 'whatever.jpg',
-                            name: 'Whatever',
-                            password: '',
-                            deadline: '2020-06-25'
                         }
                     }
-                ]
+                    ]
                 },
                 {
-                    name: "ontwerpfase",
-                    requests: [{
+                    name: "Ontwerpfase",
+                    requests: 
+                    [
+                    {
                         id: 2,
                         title: "Back-end code gezipt.",
                         reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
@@ -58,15 +53,23 @@ $(document).ready(function() {
                         }
                     }
                     ]
+                },
+                {
+                    name: "Bouwfase",
+                    requests: 
+                    [
+             
+                    ]
                 }
             ],
             popupData: {
                 title: null,
                 user: 2,
                 team: "Team Ananas",
-                description: null,
+                reason: null,
+                forWhat:null,
                 date: null,
-                selectedFiletype: "PNG",
+                filetypes: "PNG",
             },
             filetypes: [
                 '.PNG',
@@ -99,24 +102,6 @@ $(document).ready(function() {
                     id: 2,
                     name: "Datastreams.io"
                 }
-            ],
-            status: [
-                {
-                    id: 1,
-                    desc: 'reageren op aanvraag',
-                    in: 'Wachten op antwoord',
-                    out: 'Antwoorden'
-                },
-                {
-                    id: 2,
-                    desc: 'Sturen van data',
-                    in: 'Data aanleveren',
-                    out: 'Wachten op data'
-                },
-                {
-                    id: 3,
-                    desc: 'Aanvraag klaar en mogelijk om te downloaden'
-                }
             ]
         },
         computed: {
@@ -131,9 +116,26 @@ $(document).ready(function() {
                 currentFase.requests.push(Object.assign({}, this.popupData));
                 this.showPopupForFase = null;
                 this.popupData.title = null;
-                this.popupData.description = null;
+                this.popupData.reason = null;
+                this.popupData.forWhat = null;
                 this.popupData.date = null;
-                this.popupData.selectedFiletype = "PNG";
+                this.popupData.filetypes = "PNG";
+            },
+
+            deleteRequest:function(request) 
+            {
+                this.fases.forEach(function(fase) 
+                {
+                    const index = fase.requests.indexOf(request);
+                    if (index > -1) {
+                    fase.requests.splice(index, 1);
+                    }
+                });
+
+            },
+
+            closePopup: function(faseName){
+                this.showPopupForFase = null;
             },
             getUser: function(id) {
                 let user;
@@ -227,4 +229,5 @@ $(document).ready(function() {
             },
         }
     });
+
 })
