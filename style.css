@@ -80,9 +80,9 @@ p{
 
 	max-width: 350px;
 	max-height: auto;
-	padding:10px;
 	padding-left:20px;
 	padding-right:20px;
+	padding:32px;
 	/* Datastreams - White */
 	margin-top:20px;
 	background: #FFFFFF;
@@ -90,13 +90,32 @@ p{
 	box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
 	border-radius: 20px;
     transition: .2s;
-	cursor: pointer;
+	/* cursor: pointer; */
+	position: relative;
+	box-sizing: border-box;
 }
 
-#card:hover {
+/* #card:hover {
 	transform: translateY(-2px);
     background-color: #fdfdfe;
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.3);
+} */
+
+.buttonOpenPopUp {
+	border: none;
+	background: unset;
+	font-size: 35px;
+	color: #bbb;
+	cursor: pointer;
+	outline: none;
+	position: absolute;
+	top: 32px;
+	right: 32px;
+	transition: .2s;
+}
+
+.buttonOpenPopUp:hover {
+	color: #32617A;
 }
 
 #circleID{
@@ -445,9 +464,17 @@ a:link{
 	display: flex;
 	flex-direction: column;
 	max-width: 200px;
+	box-sizing: border-box;
+}
+
+.buttongroup.fullwidth button, .buttongroup.fullwidth {
+	max-width: 100% !important;
+	width: 100% !important;
 }
 
 .buttongroup button, .buttonCta {
+	box-sizing: border-box;
+
 	width: 200px;
 	height: 40px;
 	background: #E1E8F0;
@@ -495,4 +522,22 @@ textarea {
 
 .next_step {
 	max-width: 340px;
+}
+
+.popupcontainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+	height: 100% !important;
+	background-color: rgba(0, 0, 0, .4);
+}
+
+.popupcontainer .modal {
+	margin: 16px;
 }

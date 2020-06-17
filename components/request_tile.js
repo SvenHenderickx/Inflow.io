@@ -2,7 +2,7 @@ const request_tile = Vue.component('request_tile', {
     props: ['request'],
     template: `
     <div id="card">
-    <button v-on:click="showPopUpRequestDetail(request.id)" > open </button>
+    <button class="buttonOpenPopUp" v-on:click="showPopUpRequestDetail(request.id)" > <i class="fas fa-external-link-square-alt"></i> </button>
         <div id="nameholder">
             <div id="circleID">{{ getUserInitials(request.user) }}</div>
             <div id="information">
@@ -21,7 +21,7 @@ const request_tile = Vue.component('request_tile', {
             is="next_step"
         >
         </div>
-        <div  class="buttongroup">
+        <div  class="buttongroup fullwidth">
             <label v-if="request.status < 4">Snelle actie</label>
             <div
             v-bind:request="request"

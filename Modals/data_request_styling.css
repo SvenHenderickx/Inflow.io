@@ -74,10 +74,11 @@ p {
 }
 
 .modal {
-    position: fixed;
+    /* position: fixed;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    position: relative;
     background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
@@ -199,7 +200,7 @@ label {
     display: inline-block;
     cursor: pointer !important;
   }
-  
+
   .filebtn {
     margin-top: 4px;
     background: #32617A;
@@ -212,7 +213,7 @@ label {
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
     cursor: pointer !important;
   }
-  
+
   .upload-btn-wrapper input[type=file] {
     font-size: 100px;
     position: absolute;
@@ -229,7 +230,7 @@ label {
     padding-left: 35px;
     cursor: pointer;
   }
-  
+
   /* Hide the browser's default checkbox */
   .container input {
     position: absolute;
@@ -238,7 +239,7 @@ label {
     height: 0;
     width: 0;
   }
-  
+
   /* Create a custom checkbox */
   .checkmark {
     position: absolute;
@@ -250,17 +251,17 @@ label {
     background-color: white;
     border: 2px solid #32617A;
   }
-  
+
   /* When the checkbox is checked, add a blue background */
   .container input:checked ~ .checkmark {
     background-color: #32617A;
   }
-  
+
   /* Show the checkmark when checked */
   .container input:checked ~ .checkmark:after {
     display: block;
   }
-  
+
   /* Style the checkmark/indicator */
   .container .checkmark:after {
     left: 9px;

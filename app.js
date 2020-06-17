@@ -16,6 +16,8 @@ $(document).ready(function() {
             showContract: false,
             openDataOntvangen: false,
             openDataOntvangenRequestId: null,
+            openDataOntvangenContract: false,
+            openDataOntvangenContractRequestId: null,
             fases: [{
                     name: "definitiefase",
                     requests: [{
@@ -29,6 +31,7 @@ $(document).ready(function() {
                         forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
                         filetypes: "ZIP",
                         date: '2020-06-25',
+                        hasContract: true,
                         contract: {
                             text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
                             is_signed: false
@@ -225,6 +228,16 @@ $(document).ready(function() {
             function(){
                 this.openDataOntvangenRequestId = null;
                 this.openDataOntvangen = false;
+            },
+            openDataOntvangenContractPopUp:
+            function(id){
+                this.openDataOntvangenContractRequestId = id;
+                this.openDataOntvangenContract = true;
+            },
+            closeDataOntvangenContractPopUp:
+            function(){
+                this.openDataOntvangenContractRequestId = null;
+                this.openDataOntvangenContract = false;
             }
         }
     });

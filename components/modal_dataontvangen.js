@@ -3,12 +3,13 @@ const modal_dataontvangen = Vue.component('modal_dataontvangen', {
     data(){
         return {
             hasCheckedVoorwaarden: false,
-            enteredPassword: ''
+            enteredPassword: '',
+            hasCheckedContract: false
         }
     },
     template: `
     <div class="modal" id="modalReceive">
-	  <button class="close-button" id="close-button-rec"><i class="far fa-times-circle"></i></button>
+	  <button v-on:click="closeDataOntvangenPopUp()" class="close-button" id="close-button-rec"><i class="far fa-times-circle"></i></button>
 
 	  <div class="modalHeader">
 	    <div class="userTag">DS</div>
@@ -28,10 +29,14 @@ const modal_dataontvangen = Vue.component('modal_dataontvangen', {
 	    <p v-if="checkHasDate()" class="light-p-titling">Verloopt op</p>
 	    <div v-if="checkHasDate()" class="deadline" style="display: table;"><i class="far fa-clock"></i>{{ request.file.date }}</div>
 
+        <label v-on:click="openContract()" v-if="checkHasContract()" class="container">Contract
+	      <input v-if="checkHasContract()" v-model="hasCheckedContract" type="checkbox">
+	      <span v-if="checkHasContract()" class="checkmark"></span>
+	    </label></br>
 
-	    <label class="container">Ik ga akkoord met het contract
+	    <label class="container">Ik ga akkoord met de voorwaarden
 	      <input v-model="hasCheckedVoorwaarden" type="checkbox">
-	      <span class="checkmark">{{ hasCheckedVoorwaarden }}</span>
+          <span v-if="checkHasContract()" class="checkmark"></span>
 	    </label>
 
 	    <div class="inline-buttons">
@@ -68,17 +73,49 @@ const modal_dataontvangen = Vue.component('modal_dataontvangen', {
 
             if(this.hasCheckedVoorwaarden){
 
-                if(this.checkHasPassword()){
-                    if(this.enteredPassword == this.request.file.password){
+                if(this.checkHasContract()){
+                    if(this.hasCheckedContract){
+                        if(this.checkHasPassword()){
+                            if(this.enteredPassword == this.request.file.password){
+                                this.request.status = 4;
+                                this.$root.closeDataOntvangenPopUp();
+                            }
+                        }
+                        else{
+                            this.request.status = 4;
+                            this.$root.closeDataOntvangenPopUp();
+                        }
+                    }
+                    else{
+
+                    }
+                }
+                else{
+                    if(this.checkHasPassword()){
+                        if(this.enteredPassword == this.request.file.password){
+                            this.request.status = 4;
+                            this.$root.closeDataOntvangenPopUp();
+                        }
+                    }
+                    else{
                         this.request.status = 4;
                         this.$root.closeDataOntvangenPopUp();
                     }
                 }
-                else{
-                    this.request.status = 4;
-                    this.$root.closeDataOntvangenPopUp();
-                }
+
             }
+        },
+        checkHasContract:
+        function(){
+            return this.request.hasContract;
+        },
+        openContract:
+        function(){
+            this.$root.openDataOntvangenContractPopUp(this.request.id);
+        },
+        closeDataOntvangenPopUp:
+        function(){
+            this.$root.closeDataOntvangenPopUp();
         }
     }
 });

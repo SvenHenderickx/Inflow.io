@@ -6,8 +6,9 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="./js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="Modals/data_request_styling.css" />
 	<link rel="stylesheet" type="text/css" href="style.css" />
-	<link rel="stylesheet" type="text/css" href="data_request_styling.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="data_request_styling.css" /> -->
 	<script src="./js/vue.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -20,13 +21,16 @@
 	<script src="components/next_step.js"></script>
 	<script src="components/quick_reply.js"></script>
 	<script src="components/modal_dataontvangen.js"></script>
+	<script src="components/modal_contract.js"></script>
+
+	<script src="https://kit.fontawesome.com/2e10d94825.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
 
 	<div id="app">
-		
+
 		<div id="fases">
 			<div v-for="fase in fases">
 				<p>{{ fase.name }}</p>
@@ -122,11 +126,16 @@
 
 	<!-- data ontvangen -->
 
-	<div v-if="openDataOntvangen" class="modal" id="modalReceive">
+	<div v-if="openDataOntvangen" class="popupcontainer" >
 		<div
 		v-bind:request="getRequest(openDataOntvangenRequestId)"
 		is="modal_dataontvangen">
 		</div>
+		<div v-if="openDataOntvangenContract"
+		v-bind:request="getRequest(openDataOntvangenContractRequestId)"
+		is="modal_contract">
+		</div>
+
 	</div>
 
 
