@@ -5,6 +5,7 @@ $(document).ready(function() {
     const app = new Vue({
         el: '#app',
         data: {
+            dropdownState: 1,
             projects: [
                 {
                     id: 1,
@@ -202,8 +203,18 @@ $(document).ready(function() {
                 this.projects.splice(projectID, 1);
             },
             dropdownShow: function(){
-                $('#myDropdown').toggleClass("show");
+                if (this.dropdownState = 1) {
+                    $('#myDropdown').has("show");
+                    this.dropdownState = 2;
+                }
+            },
+            dropdownHide: function () {
+                if (this.dropdownState = 2) {
+                    $('#myDropdown').toggleClass("show");
+                    this.dropdownState = 1;
+                }
             }
     }
     });
 });
+

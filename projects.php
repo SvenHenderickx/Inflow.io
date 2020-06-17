@@ -36,8 +36,8 @@
             </div>
         </div>
 
-        <div id="app">
-            <div class="emptyImage" v-if="projects.size = 1">
+        <div id="app" v-on:click="dropdownHide()">
+            <div class="emptyImage" v-if="this.projects.size = 1">
                 <img src="images/emptyProjects.png">
             </div>
             <div id="c1" class="projectscontainer">
