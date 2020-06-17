@@ -2,19 +2,17 @@ $(document).ready(function(){
   var mask = document.querySelector("#pageMask");
   
   var modalReq = document.querySelector("#modalRequest");
-  var modalRec = document.querySelector("#modalReceive");
+  var ModalSendStatic = document.querySelector("#modalSendStatic");
   var modalSend = document.querySelector("#modalSend")
   var modalTerms = document.querySelector("#modalTerms")
   var modalContract = document.querySelector("#modalContract");
+  var modalReceive = document.querySelector("#modalReceive")
 
   var openReq = document.querySelector("#open-request-modal");
   var closeReq = document.querySelector("#close-button");
 
-  var openRec = document.querySelector("#open-receive-modal");
-  var closeRec = document.querySelector("#close-button-rec");
-
-  var openRec = document.querySelector("#open-receive-modal");
-  var closeRec = document.querySelector("#close-button-rec");
+  var openSendStatic = document.querySelector("#open-sendst-modal");
+  var closeSendStatic = document.querySelector("#close-button-sendst");
 
   var openSend = document.querySelector("#open-send-modal");
   var closeSend = document.querySelector("#close-button-send");
@@ -25,15 +23,19 @@ $(document).ready(function(){
   var openContract = document.querySelector("#open-contract-modal");
   var closeContract = document.querySelector("#close-button-contract");
 
+  var openReceive = document.querySelector("#open-receive-modal");
+  var closeReceive = document.querySelector("#close-button-rec");
+
 // Each modal has to be closed individually at first to prevent bugs
   modalReq.classList.toggle("closed");
-  modalRec.classList.toggle("closed");
+  ModalSendStatic.classList.toggle("closed");
   modalSend.classList.toggle("closed");
   modalTerms.classList.toggle("closed");
   modalContract.classList.toggle("closed");
+  modalReceive.classList.toggle("closed");
   mask.classList.toggle("closed");
 
-// Function to close request modal
+// Function to open & close request modal
   closeReq.addEventListener("click", function() {
     modalReq.classList.toggle("closed");
     mask.classList.toggle("closed");
@@ -44,18 +46,18 @@ $(document).ready(function(){
     mask.classList.toggle("closed");
   });
 
-  // Function to close receive modal
-  closeRec.addEventListener("click", function() {
-    modalRec.classList.toggle("closed");
+  // Function to open & close receive modal
+  closeSendStatic.addEventListener("click", function() {
+    ModalSendStatic.classList.toggle("closed");
     mask.classList.toggle("closed");
   });
 
-  openRec.addEventListener("click", function() {
-    modalRec.classList.toggle("closed");
+  openSendStatic.addEventListener("click", function() {
+    ModalSendStatic.classList.toggle("closed");
     mask.classList.toggle("closed");
   });
 
-  // Function to close send modal
+  // Function to open & close send modal
   closeSend.addEventListener("click", function() {
     modalSend.classList.toggle("closed");
     mask.classList.toggle("closed");
@@ -66,7 +68,7 @@ $(document).ready(function(){
     mask.classList.toggle("closed");
   });
 
-  // Function to close terms modal
+  // Function to open & close terms modal
   closeTerms.addEventListener("click", function() {
     modalTerms.classList.toggle("closed");
     mask.classList.toggle("closed");
@@ -77,7 +79,7 @@ $(document).ready(function(){
     mask.classList.toggle("closed");
   });
 
-  // Function to close contract modal
+  // Function to open & close contract modal
   closeContract.addEventListener("click", function() {
     modalContract.classList.toggle("closed");
     mask.classList.toggle("closed");
@@ -85,6 +87,17 @@ $(document).ready(function(){
 
   openContract.addEventListener("click", function() {
     modalContract.classList.toggle("closed");
+    mask.classList.toggle("closed");
+  });
+
+  // Function to open & close data receive modal
+  closeReceive.addEventListener("click", function() {
+    modalReceive.classList.toggle("closed");
+    mask.classList.toggle("closed");
+  });
+
+  openReceive.addEventListener("click", function() {
+    modalReceive.classList.toggle("closed");
     mask.classList.toggle("closed");
   });
 });
