@@ -16,7 +16,7 @@ $(document).ready(function() {
             openDataVersturenId: null,
             showContract: false,
             openDataOntvangen: false,
-            openDataVersturen: true,
+            openDataVersturen: false,
             openDataOntvangenRequestId: null,
             openDataOntvangenContract: false,
             openDataOntvangenContractRequestId: null,
