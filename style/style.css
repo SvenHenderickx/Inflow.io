@@ -3,12 +3,101 @@ body {
     background-color: #F0F3F7;
 }
 
+p {
+    display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.RadioButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.mooieKnop {
+    background-color: #32617A; /* Green */
+    border-radius: 35.5px;
+    color: white;
+}
+
+.mooieKnopB{
+    background-color: #FF2F55; /* Green */
+    border-radius: 35.5px;
+    color: white;
+}
+
+.invulForm {
+    position: absolute;
+    margin-top: -80px;
+}
+
+#app {
+    margin-left: 100px;
+}
+
+.opvulImage {
+    position: absolute;
+    margin-top: 80px;
+    margin-left: 900px;
+}
+
+.watenwie {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    margin-bottom: 10px;
+}
+
+.templates {
+    margin-bottom: 10px;
+}
+
+.invulForm {
+    width: 500px;
+}
+
+.templateButton {
+    display: flex;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+    width: 200px;
+}
+
+.templateButton:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: translate(-2px, -2px);
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+}
+
+
+
+[type=text] {
+    background: white;
+    border-radius: 20px;
+
+}
+
 /* HIDE RADIO */
 [type=radio] {
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
+    display: inline-block;
+    border: black;
+
 }
 
 /* IMAGE STYLES */
@@ -119,7 +208,42 @@ body {
 .header .headerpersonal .pcontainer .pname {
     font-size: 24px;
     font-family: 'Oxygen', sans-serif; }
-.header .headerpersonal .pcontainer .pteam {
+.header .headerpersonal .pcontainer {
+    font-size: 18px; }
+
+.headerB {
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-content: flex-end;
+}
+
+.headerB .headerpersonal {
+    align-self: flex-end;
+    display: flex;
+    height: 60px;
+    flex-direction: row;
+    width: 200px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-bottom: 30px; }
+.headerB .headerpersonal img {
+    height: 60px;
+    width: 60px;
+    max-width: 60px;
+    order: 1;
+    flex: 1; }
+.headerB .headerpersonal .pcontainer {
+    margin-left: 10px;
+    margin-top: 5px;
+    order: 2;
+    flex: 1; }
+.headerB .headerpersonal .pcontainer .pname {
+    font-size: 24px;
+    font-family: 'Oxygen', sans-serif; }
+.headerB .headerpersonal .pcontainer {
     font-size: 18px; }
 
 .projectscontainer {
@@ -175,18 +299,21 @@ body {
     bottom: 30px;
     left: 30px;
     display: block;
-    background: #32617A;
     width: 165px;
     height: 30px;
+    font-weight: bold;
+    color: #32617A;
+    font-size: 18px;
     border-radius: 5px; }
 .projectscontainer .project .titleclient, .projectscontainer .projectadd .titleclient {
     position: absolute;
     bottom: 30px;
     right: 30px;
     display: block;
-    background: #3BB3E5;
     width: 115px;
     height: 30px;
+    color: #32617A;
+    font-size: 18px;
     border-radius: 5px; }
 .projectscontainer .project .addicon, .projectscontainer .projectadd .addicon {
     position: absolute;
@@ -197,7 +324,6 @@ body {
     color: #4EB486; }
 .projectscontainer .invis {
     opacity: 0; }
-
 .projectadd {
     cursor: pointer;
     transition: 0.3s; }
@@ -223,4 +349,7 @@ body {
     transition: 0.3s;
     transform: translate(-2px, -2px);
     box-shadow: #4EB486 6px 7px 0 0;
+}
+.titleproject {
+
 }

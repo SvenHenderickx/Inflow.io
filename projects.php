@@ -25,10 +25,10 @@
 
         <div class="header">
             <div class="headerlogo">
-                <img src="images/logo.jpg">
+                <img src="images/logo.png">
             </div>
             <div class="headerpersonal">
-                <img src="images/persona.jpg">
+                <img src="images/persona.png">
                 <div class="pcontainer">
                     <p class="pname">You</p>
                     <p class="pteam">Your team</p>
@@ -55,11 +55,10 @@
                     <div class="titleproject">Nieuw project</div>
                 </div>
                 <div class="hoverborder"></div>
-                <div class="project invis"></div>
             </div>
         </div>
 
-        <div v-if="projects =< 2">
+        <div class="emptyImage" v-if="projects.size = 1">
             <img src="images/emptyProjects.png">
         </div>
 
