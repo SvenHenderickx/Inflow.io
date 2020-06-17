@@ -17,9 +17,11 @@
 
 body {
 	overflow: hidden;
+
 }
 
 .header {
+	background: white;
 	height: 120px;
 	border-bottom: 2px solid black;
 	display: flex;
@@ -160,20 +162,12 @@ body {
 	}
 }
 
-.projectadd {
+.projectadd, .project {
 	cursor: pointer;
 	transition: 0.3s;
 	&:hover {
 		transform: translate(-2px, -2px);
 		 box-shadow: #4EB486 6px 7px 0 0;
-		/*&::after {
-			content:"abs";
-			width: 100%;
-			height: 100%;
-			background: #80BB00;
-			display: block;
-			transform: translate(4px, 4px);
-		}*/
 	}
 }
 
@@ -411,6 +405,33 @@ body {
 	transform: translateX(-50%);
 	
 }
+.step8 {
+	width: 350px;
+	position: absolute;
+	top: 630px;
+	left: 50%;
+	transform: translateX(-50%);
+	
+}
+.step9 {
+	width: 350px;
+	position: absolute;
+	height: 220px;
+	top: 390px;
+	left: 50%;
+	transform: translateX(-50%);
+	
+
+}
+.step10 {
+	width: 350px;
+	position: absolute;
+	height: 220px;
+	top: 505px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
 .okenextstep {
 	text-align: center;
 	line-height: 30px;
@@ -586,8 +607,9 @@ body {
 #c1, #c2 {
 	transition: 0.3s;
 }
+/*background-color:rgba(50,97,122, 0.5);*/
 
-#step1, #step2, #step3, #step4, #step4a, #step5, #stap6, #step7, #stap9, #step10 {
+#step1, #step2, #step3, #step4, #step4a, #step5, #step6, #step7, #step8, #step9, #step10 {
 	opacity: 0;
 	transition: 0.3s;
 }
@@ -811,6 +833,120 @@ body {
 				background: #80BB00;
 			}
     }
+    .k3c2 {
+    	color: white;
+    	background: #32617A;
+    	border-radius: 100px;
+    	font-size: 12px;
+    	display: inline-block;
+    	padding: 5px 10px;
+    	margin-bottom: 20px;
+    }
+    .k3c3 {
+    	background: #E1E8F0;
+    	color: #747474;
+    	padding:15px 30px;
+    	display: inline-block;
+    	border-radius: 20px;
+    	margin-bottom: 20px;
+    }
+    .k3c4 {
+    	width: 220px;
+    	background: #608EA6;
+    	color: white;
+    	margin-bottom: 20px;
+    	border-radius: 20px;
+    	height:130px;
+    	p {
+    		font-size: 90px;
+    		text-align: center;
+    	}
+    }
+    .k3c5 {
+    	box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+		background: #FFFFFF;
+		border-radius: 35.5px;
+		color: #32617A;
+		font-size: 18px;
+		display: inline-block;
+		padding: 16px 24px;
+		font-family: oxygenbold;
+		cursor: pointer;
+		margin-right: 20px;
+		transition: 0.3s;
+		margin-bottom: 20px;
+		&:hover {
+			color:white;
+			background: #80BB00;
+		}
+   	}
+   	.k3c6 {
+   		display: block;
+    	font-size: 25px;
+    	margin-bottom: 20px;
+    	color: #80BB00;
+    	&:after {
+    		content:"Ik ga akkoord met de voorwaarden.";
+    		font-size: 18px;
+    		margin-left: 15px;
+    		font-family: oxygenbold;
+    	}
+   	}
+   	.k3c7 {
+   		text-align: center;
+    	width: 100%;
+    	box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+		background: #32617A;
+		border-radius: 35.5px;
+		color: white;
+		font-size: 18px;
+		padding: 16px 24px;
+		font-family: oxygenbold;
+		cursor: pointer;
+		z-index: 15;
+		transition: 0.3s;
+		margin-bottom: 15px;
+		&:hover {
+			background: #80BB00;
+		}
+   	}
+   	.k4c1 {
+   		position: relative;
+    	border: 4px solid #80BB00;
+		color: #80BB00;
+		font-size: 20px;
+		font-family: oxygenbold;
+		text-align: center;
+		padding: 34px 12px;
+		text-transform: uppercase;
+		border-radius: 10px;
+		margin-bottom: 20px;
+		&:before {
+			content:"Huidige stap";
+			font-family: oxygenbold;
+			color: #80BB00;
+			font-size: 13px;
+			position: absolute;
+			background: white;
+			text-transform: initial;
+			top: -17px;
+    		left: 25px;
+		    padding: 6px;
+		}
+		&:after {
+			content:"Geen verdere actie nodig";
+			font-family: oxygenbold;
+			color: white;
+			font-size: 13px;
+			position: absolute;
+			background: #80BB00;
+			text-transform: initial;
+			bottom: -15px;
+    		left: 70px;
+		    padding: 6px 40px;
+		    border-radius: 4px;
+		}
+   	}
 }
 
 .fullwidth {
@@ -827,7 +963,34 @@ body {
 	background: #32617A;
 }
 
-#k2c {
+#k2c, #k3c, #k4c {
 	display: none;
 	opacity: 0;
+}
+
+.backgroundings {
+	height: 101px;
+    width: 1170px;
+    display: block;
+    position: fixed;
+    top: -45px;
+    left: -100px;
+    background: white;
+    border-radius: 20px;
+}
+
+#c3, #c4 {
+	display: none;
+	.titleproject {
+		background: white;
+		color: #32617A;
+		font-size: 24px;
+		font-family: oxygenbold;
+	}
+	.titleclient {
+		background: white;
+		color: #3BB3E5;
+		font-size: 24px;
+		font-family: oxygenbold;
+	}
 }

@@ -3,20 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="height=device-height, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/css/main.css">  
+	<link rel="stylesheet" type="text/css" href="style/css/main.css">  
     <script src="js/mainscript.js"></script>
     <script src="https://use.fontawesome.com/6ea5af59bd.js"></script>
 	<title>Inflow</title>
 
 </head>
 <body>
+	<div class="wrapper">
 	<div class="header">
 		<div class="headerlogo">
-			<img src="css/css/images/logo.jpg">
+			<img src="style/css/images/logo.jpg">
 			<!-- <b>Nieuw Dataproject</b> -->
 		</div>
 		<div class="headerpersonal">
-			<img src="css/css/images/persona.jpg">
+			<img src="style/css/images/persona.jpg">
 			<div class="pcontainer">
 				<p class="pname">You</p>
 				<p class="pteam">Your team</p>
@@ -25,19 +26,19 @@
 	</div>
 	<div id="c1" class="projectscontainer">
 		<div class="project">
-			<img class="snapshot" src="css/css/images/snapshot1.png">
+			<img class="snapshot" src="style/css/images/snapshot1.png">
 			<div class="options"><i class="fa fa-cog" aria-hidden="true"></i></div>
 			<div class="titleproject"></div>
 			<div class="titleclient"></div>
 		</div>
 		<div class="project">
-			<img class="snapshot" src="css/css/images/snapshot1.png">
+			<img class="snapshot" src="style/css/images/snapshot1.png">
 			<div class="options"><i class="fa fa-cog" aria-hidden="true"></i></div>
 			<div class="titleproject"></div>
 			<div class="titleclient"></div>
 		</div>
 		<div class="project">
-			<img class="snapshot" src="css/css/images/snapshot1.png">
+			<img class="snapshot" src="style/css/images/snapshot1.png">
 			<div class="options"><i class="fa fa-cog" aria-hidden="true"></i></div>
 			<div class="titleproject"></div>
 			<div class="titleclient"></div>
@@ -45,7 +46,7 @@
 	</div>
 	<div id="c2" class="projectscontainer">
 		<div class="project">
-			<img class="snapshot" src="css/css/images/snapshot1.png">
+			<img class="snapshot" src="style/css/images/snapshot1.png">
 			<div class="options"><i class="fa fa-cog" aria-hidden="true"></i></div>
 			<div class="titleproject"></div>
 			<div class="titleclient"></div>
@@ -57,6 +58,35 @@
 		<div class="hoverborder"></div>
 		<div class="project invis"></div>
 	</div>
+
+	<div id="c3" class="projectscontainer">
+		<div class="project">
+			<img class="snapshot" src="style/css/images/snapshot1.png">
+			<div class="options"><i class="fa fa-cog" aria-hidden="true"></i></div>
+			<div class="titleproject">Uitlegboard</div>
+			<div class="titleclient">Voor u</div>
+		</div>
+		<div id="projectadd" class="projectadd">
+			<div class="addicon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+			<div class="titleproject">Nieuw project</div>
+			<div class="titleclient">Client</div>
+		</div>
+		<div class="hoverborder"></div>
+		<div class="project invis"></div>
+	</div>
+
+	<div id="c4" class="projectscontainer">
+		<div onclick="javascript:location.href='projects.php'" id="projectadd" class="projectadd">
+			<div class="addicon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+			<div class="titleproject">Nieuw project</div>
+			<div class="titleclient">Client</div>
+		</div>
+		<div class="hoverborder"></div>
+		<div class="project invis"></div>
+		<div class="project invis"></div>
+	</div>
+
+
 	<div id="bgfade" class="backgroundfade"></div>
 	<div id="onboardingskip" onclick="onboardingskip()" class="skiponboarding">Sla de uitleg over</div>	
 
@@ -72,6 +102,16 @@
 
 	<div  id="step5" class="onboarding oleft step5">Hier is hun uitleg te zien over waarom ze de data nodig hebben. Laten we hiermee akkoord gaan zodat we de data kunnen versturen.</div>
 
+	<div  id="step6" class="onboarding oleft step5">Hier kan je de data uploaden en een datum instellen wanneer de data verwijderd moet worden. Laten we de data versturen.</div>
+
+	<div  id="step7" class="onboarding oleft step5">Zo, de data is verstuurd. Deze stap  is nu compleet en de data is in te zien door beide partijen.<div onclick="nextstep(7)" class="okenextstep">Oke</div></div>
+
+	<div  id="step8" class="onboarding oleft step8">Je kan zelf ook altijd data aanvragen aan de andere partij door een stap toe te voegen.<div onclick="nextstep(8)" class="okenextstep">Oke</div></div>
+
+	<div  id="step9" class="onboarding oup step9">Hier zijn de fases van een project te zien. De fases worden bepaald aan de hand voor welke projectmethode gekozen wordt. Je kan altijd nieuwe stappen onder elke fase toevoegen maar ook nieuwe fases toevoegen.<div onclick="nextstep(9)" class="okenextstep">Oke</div></div>
+
+	<div  id="step10" class="onboarding step10">Dit is het einde van de onboarding, we hebben je board van net nog hier gehouden zodat je altijd kan terugkijken. Je kan dit board ook verwijderen indien gewenst.<div onclick="nextstep(10)" class="okenextstep">Oke</div></div>
+
 	<div id="counter" class="onboardingcounter">1/10</div>
 
 	<div id="welcomepopup" class="welcomepopup">
@@ -81,8 +121,8 @@
 			<p class="welcomesummary">Inflow.io is een tool gemaakt in samenwerking met Datastreams.io, <br>dé nummer 1 in het online delen van vertrouwelijke data.</p>
 			<div onclick="onboardingskip()" class="noonboarding">Meteen aan de slag!</div>
 			<div onclick="onboardingstart()" class="yesonboarding">Ik graag wat uitleg!</div>
-			<img class="welcomesponsored" src="css/css/images/welcomesponsored.jpg">
-			<img class="welcomeowner" src="css/css/images/welcomeowner.jpg">
+			<img class="welcomesponsored" src="style/css/images/welcomesponsored.jpg">
+			<img class="welcomeowner" src="style/css/images/welcomeowner.jpg">
 			<p class="welcomename">Bob Nieme</p>
 			<p class="welcomejob">CEO Datastreams.io</p>
 		</div>
@@ -104,6 +144,7 @@
 		<div class="tijdlijncont locked">
 			<div class="tijdlijn tijdlijninprogress"></div>
 		</div>
+		<div class="backgroundings">.</div>
 		<div id="k1" class="kaart addstap k1"><p>Voeg nieuwe stap toe</p></div>
 		<div class="kaart addstap k2"><p>Voeg nieuwe stap toe</p></div>
 		<div class="kaart addstap k3"><p>Voeg nieuwe stap toe</p></div>
@@ -130,15 +171,33 @@
 				<p class="k2c1">Deadline data ontvangen</p>
 				<p class="k2c3">15 juni</p>
 				<div class="fullwidth">
-					<div onclick="nextstep(4)" class="k2c4">Afwijzen</div>
-					<div class="k2c5">Ik ga akkoord</div>
+					<div class="k2c4">Afwijzen</div>
+					<div onclick="nextstep(5)" class="k2c5">Ik ga akkoord</div>
 				</div>
+			</div>
+			<div id="k3c" class="kaartcontent3">
+				<p class="k2c1">Gewenste bestandstypes:</p>
+				<p class="k3c2">.PDF</p>
+				<p class="k3c2">.SVG</p>
+				<p class="k3c2">.PNG</p>
+				<p class="k2c1">Einddatum instellen:</p>
+				<p class="k3c3">22-8-2020</p>
+				<p class="k2c1">Upload data:</p>
+				<div class="k3c4"><p>+</p></div>
+				<p class="k3c5">Geavanceerde instellingen </p>
+				<i class="k3c6 fa fa-check-square" aria-hidden="true"></i>
+				<p onclick="nextstep(6)" class="k3c7">Verstuur data</p>
+			</div>
+			<div id="k4c" class="kaartcontent4">
+				<p class="k1c1">Back-end landingspage</p>
+				<p class="k1c2">Viverra non odio a, tristique imperdiet mi. Donec ac purus sem. Mauris id pretium nibh. Phasellus lobortis tempus bibendum.</p>
+				<p class="k4c1">Backenddata.json</p>
 			</div>
 		</div>
 		<div id="kaartfade" class="kaartfade"></div>
 
 
 	</div>
-
+</div>
 </body>
 </html>
