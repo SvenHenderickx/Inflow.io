@@ -13,8 +13,10 @@ $(document).ready(function() {
             showPopupForFase: null,
             openRequestDetail: false,
             requestId: null,
+            openDataVersturenId: null,
             showContract: false,
             openDataOntvangen: false,
+            openDataVersturen: true,
             openDataOntvangenRequestId: null,
             openDataOntvangenContract: false,
             openDataOntvangenContractRequestId: null,
@@ -231,7 +233,7 @@ $(document).ready(function() {
             },
             openDataOntvangenContractPopUp:
             function(id){
-                this.openDataOntvangenContractRequestId = id;
+                this.openDataOntvangenContHerinneringractRequestId = id;
                 this.openDataOntvangenContract = true;
             },
             closeDataOntvangenContractPopUp:

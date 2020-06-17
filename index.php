@@ -22,6 +22,7 @@
 	<script src="components/quick_reply.js"></script>
 	<script src="components/modal_dataontvangen.js"></script>
 	<script src="components/modal_contract.js"></script>
+	<script src="components/modal_dataversturen.js"></script>
 
 	<script src="https://kit.fontawesome.com/2e10d94825.js" crossorigin="anonymous"></script>
 
@@ -59,8 +60,8 @@
 						<div id="afwachting3">Wachten op antwoord
 							<div id="actieVan3">Actie bij jou</div>
 						</div>
-						<div id="quickreminder">Data aanleveren</div>
-						<div id="quickcancel">Contract wijzigen</div>
+						n</div>
+						<div id="quickcancel">Contract wijzigen</div><div id="quickreminder">Data aanleveren
 					</div>
 					<!-- actie compleet bestand downloaden kaart -->
 					<div id="completedTransfer">
@@ -135,10 +136,14 @@
 		v-bind:request="getRequest(openDataOntvangenContractRequestId)"
 		is="modal_contract">
 		</div>
-
 	</div>
 
-
+	<div v-if="openDataVersturen" class="popupcontainer" >
+	<div
+		v-bind:request="getRequest(openDataVersturenId)"
+		is="modal_dataversturen">
+		</div>
+	</div>
 </div>
 
 </body>
