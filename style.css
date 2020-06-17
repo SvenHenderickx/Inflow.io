@@ -224,51 +224,51 @@ font-weight: bold;
 }
 
 #actieVan{
-		position:absolute !important;
-		margin-top:10px;
-		margin-left:70px !important;
-		background: #32617A !important;
-border-radius: 4px !important;
-	font-size:13px !important;
-	padding-left:10px !important;
-	padding-right:10px !important;
-	color: white !important;
-font-family: Oxygen !important;
-font-style: normal !important;
-font-weight: bold !important;
-text-transform: lowercase !important;
+	position:absolute;
+	margin-top:10px;
+	margin-left:70px;
+	background: #32617A;
+	border-radius: 4px;
+	font-size:13px;
+	padding-left:10px;
+	padding-right:10px;
+	color: white;
+	font-family: Oxygen;
+	font-style: normal;
+	font-weight: bold;
+	text-transform: lowercase;
 }
 
 #actieVan2{
-		position:absolute !important;
-		margin-top:10px;
-		margin-left:100px !important;
-		background: #B8E2C4 !important;
-border-radius: 4px !important;
+	position:absolute !important;
+	margin-top:10px;
+	margin-left:100px !important;
+	background: #B8E2C4 !important;
+	border-radius: 4px !important;
 	font-size:13px !important;
 	padding-left:10px !important;
 	padding-right:10px !important;
 	color: white !important;
-font-family: Oxygen !important;
-font-style: normal !important;
-font-weight: bold !important;
-text-transform: lowercase !important;
+	font-family: Oxygen !important;
+	font-style: normal !important;
+	font-weight: bold !important;
+	text-transform: lowercase !important;
 }
 
 #actieVan3{
-		position:absolute !important;
-		margin-top:10px;
-		margin-left:120px !important;
-		background: #FF2F55 !important;
-border-radius: 4px !important;
+	position:absolute !important;
+	margin-top:10px;
+	margin-left:120px !important;
+	background: #FF2F55 !important;
+	border-radius: 4px !important;
 	font-size:13px !important;
 	padding-left:10px !important;
 	padding-right:10px !important;
 	color: white !important;
-font-family: Oxygen !important;
-font-style: normal !important;
-font-weight: bold !important;
-text-transform: lowercase !important;
+	font-family: Oxygen !important;
+	font-style: normal !important;
+	font-weight: bold !important;
+	text-transform: lowercase !important;
 }
 
 #quickreminder{
