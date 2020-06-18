@@ -6,6 +6,7 @@ $(document).ready(function() {
         el: '#app',
         data: {
             isActive: false,
+            showNameChange: false,
             projects: [
                 {
                     id: 1,
@@ -195,22 +196,21 @@ $(document).ready(function() {
             openProject: function(projectID) {
                 this.redirectTo('index.php' + '?projectID=' + projectID);
             },
-            changeProjectName: function(projectID, currentName){
-                console.log(projectID);
-                console.log(currentName);
-                let newName = prompt("Verander de naam!", currentName);
-                this.projects.name = newName;
-                console.log(newName);
-                console.log(this.projects.name);
-            },
+            // changeProjectName: function(projectID, currentName){
+            //     let newName = prompt("Verander de naam!", currentName);
+            //     this.projects.name = newName;
+            // },
             deleteProject: function(projectID){
-                this.projects.splice(projectID, 1);
+                this.projects.splice(this.projects.indexOf(projectID), 1);
             },
             myDropdown: function () {
                 this.isActive = !this.isActive;
             },
             mouseLeave: function() {
                 this.isActive = !this.isActive;
+            },
+            myNameChangePopUp: function () {
+                this.showNameChange = !this.showNameChange;
             }
     }
     });

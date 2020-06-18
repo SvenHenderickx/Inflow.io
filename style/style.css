@@ -155,6 +155,7 @@ p {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 999;
+    width: 200px;
 }
 
 /* Links inside the dropdown */
@@ -170,6 +171,14 @@ p {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+.myNameChangePopUp {
+    background: white;
+    display: flex;
+    position: absolute;
+    margin-top: 230px;
+    margin-left: 20px;
+}
 
 .header {
     height: 120px;
