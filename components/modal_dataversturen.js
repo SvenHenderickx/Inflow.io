@@ -107,6 +107,7 @@ const modal_dataversturen = Vue.component('modal_dataversturen', {
         },
         cancelDelivery: function() {
             this.$root.closeDataVersturenPopUp();
+            this.$root.closeContractPopUp();
         },
         openContract:
         function(){

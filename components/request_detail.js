@@ -42,6 +42,7 @@ const request_detail = Vue.component('request_detail', {
         closeDetail:
         function(){
             this.$parent.closeDetail();
+            this.$root.closeContractPopUp();
         },
         openContract:
         function(id){
