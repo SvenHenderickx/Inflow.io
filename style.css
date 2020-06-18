@@ -3,6 +3,7 @@
 body{
 	font-family: 'Oxygen', sans-serif;
 	background: #E1E8F0;
+	margin: 0;
 }
 
 #aanvraagbtn{
@@ -650,6 +651,7 @@ textarea {
 
 .fases {
 	display: flex;
+	justify-content: center;
 	flex-direction: row;
 }
 
@@ -752,7 +754,7 @@ textarea {
 	  flex: 1;
 	  align-self: flex-end;
 	  display: flex;
-	  height: 50px;
+	  height: 45px;
 	  flex-direction: row;
 	  flex-wrap: wrap;
 	  justify-content: flex-start;
