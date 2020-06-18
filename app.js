@@ -2,6 +2,10 @@
 
 $(document).ready(function() {
 
+    if (window.localStorage.getItem("NieuwOpSite") != "Nee") {
+        location.href='index.html'
+        window.localStorage.setItem("NieuwOpSite", "Nee");
+    }
 
     const app = new Vue({
         el: '#app',
