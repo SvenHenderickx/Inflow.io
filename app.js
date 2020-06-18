@@ -52,16 +52,16 @@ $(document).ready(function() {
                     name: "ontwerpfase",
                     requests: [{
                         id: 2,
-                        user: 2,
+                        user: 4,
                         origin_you: true,
-                        team: 1,
+                        team: 2,
                         status: 1,
-                        title: "Back-end code gezipt.",
+                        title: "Gegevens gebruikers",
                         reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
                         forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
-                        filetypes: "ZIP",
+                        filetypes: ".CSV",
                         date: '2020-06-25',
-                        hasContract: true,
+                        hasContract: false,
                         contract: {
                             text: '',
                             is_signed: false
@@ -104,6 +104,11 @@ $(document).ready(function() {
                     id: 3,
                     name: 'Sven Henderickx',
                     team: 1
+                },
+                {
+                    id: 4,
+                    name: 'Robert Pasman',
+                    team: 2
                 }
             ],
             teams: [
