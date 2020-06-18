@@ -36,17 +36,17 @@
             </div>
         </div>
 
-        <div id="app" v-on:click="dropdownHide()">
+        <div id="app">
             <div class="emptyImage" v-if="this.projects.size = 1">
                 <img src="images/emptyProjects.png">
             </div>
             <div id="c1" class="projectscontainer">
                 <div class="project" v-for="project in projects">
                     <img v-on:click="openProject(this.id)" class="snapshot" src="images/snapshot1.png">
-                    <div class="options" v-on:click="dropdownShow()"><i class="fa fa-cog" aria-hidden="true"></i>
-                        <div id="myDropdown" class="dropdown-content" v-on:click="dropdownShow()">
-                            <a v-on:click="openProject(this.id, this.name)">Open project</a>
-                            <a v-on:click="changeProjectName(this.id)">Verander projectnaam</a>
+                    <div class="options" v-bind:class="{'show' : isActive}" v-on:click="myDropdown()" @mouseleave="mouseLeave"><i class="fa fa-cog" aria-hidden="true"></i>
+                        <div id="myDropdown" v-if="isActive" class="dropdown-content">
+                            <a v-on:click="openProject(this.id)">Open project</a>
+                            <a v-on:click="changeProjectName(this.id, this.name)">Verander projectnaam</a>
                             <a v-on:click="deleteProject(this.id)">Verwijder project</a>
                         </div>
                     </div>

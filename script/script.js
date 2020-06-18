@@ -5,7 +5,7 @@ $(document).ready(function() {
     const app = new Vue({
         el: '#app',
         data: {
-            dropdownState: 1,
+            isActive: false,
             projects: [
                 {
                     id: 1,
@@ -196,23 +196,21 @@ $(document).ready(function() {
                 this.redirectTo('index.php' + '?projectID=' + projectID);
             },
             changeProjectName: function(projectID, currentName){
+                console.log(projectID);
+                console.log(currentName);
                 let newName = prompt("Verander de naam!", currentName);
                 this.projects.name = newName;
+                console.log(newName);
+                console.log(this.projects.name);
             },
             deleteProject: function(projectID){
                 this.projects.splice(projectID, 1);
             },
-            dropdownShow: function(){
-                if (this.dropdownState = 1) {
-                    $('#myDropdown').has("show");
-                    this.dropdownState = 2;
-                }
+            myDropdown: function () {
+                this.isActive = !this.isActive;
             },
-            dropdownHide: function () {
-                if (this.dropdownState = 2) {
-                    $('#myDropdown').toggleClass("show");
-                    this.dropdownState = 1;
-                }
+            mouseLeave: function() {
+                this.isActive = !this.isActive;
             }
     }
     });

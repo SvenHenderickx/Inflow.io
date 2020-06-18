@@ -143,18 +143,18 @@ p {
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
+    z-index: 999;
     position: relative;
     display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    display: none;
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 999;
 }
 
 /* Links inside the dropdown */
@@ -349,12 +349,14 @@ p {
     transition: 0.3s;
     transform: translate(-2px, -2px);
     box-shadow: #4EB486 6px 7px 0 0;
+    z-index: 999;
 }
 .options:hover {
     cursor: pointer;
     transition: 0.3s;
     transform: translate(-2px, -2px);
     box-shadow: #4EB486 6px 7px 0 0;
+    z-index: 999;
 }
 .titleproject {
 
