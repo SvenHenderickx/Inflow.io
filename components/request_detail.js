@@ -8,11 +8,11 @@ const request_detail = Vue.component('request_detail', {
         <label>Waar wordt de data voor gebruikt?</label>
         <textarea placeholder="Hier komt de beschrijving van je data aanvraag." rows="3" cols="40" class="inputLikeText normal" v-model="request.forWhat">
         </textarea>
-        <div class="currentstep_container">
-            <div id="afwachting">Wachten op antwoord
-                <div id="actieVan">Vereist actie van Datastreams</div>
-
-            </div>
+        <div v-bind:currentStatus="request.status"
+            v-bind:origin_you="request.origin_you"
+            v-bind:request="request"
+            is="next_step"
+        >
         </div>
         <label>Deadline</label>
         <input class="dateinput" type="date" v-model="request.date"></input>
@@ -20,14 +20,14 @@ const request_detail = Vue.component('request_detail', {
         <p v-if="hasFilePreference()">{{ request.filetypes }}</p>
         <aside>
             <div class="buttongroup mainButtons">
-                <button class="primairy">Data aanleveren</button>
-                <button class="">Reageren in chat</button>
-                <button v-if="hasContract()" v-on:click="openContract(request.id)" class="">Contract inzien</button>
+                <button v-if="hasContract()" v-on:click="openContract(request.id)" class="primairy">Contract inzien</button>
             </div>
             <div class="buttongroup">
-                <label>Snelle actie</label>
-                <button class="primairy">Accepteren</button>
-                <button class="">Annuleren</button>
+                <label v-if="request.status < 4">Snelle actie</label>
+                <div
+                v-bind:request="request"
+                is="quick_reply">
+                </div>
             </div>
         </aside>
     </div>
@@ -45,11 +45,16 @@ const request_detail = Vue.component('request_detail', {
         },
         openContract:
         function(id){
-            this.$parent.showContract = true;
+            this.$parent.showContractPopUp(this.request.id);
         },
         hasContract:
         function(){
-            return this.request.hasOwnProperty('contract');
+            if(this.request.contract.text.length > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
         },
         hasFilePreference:
         function(){

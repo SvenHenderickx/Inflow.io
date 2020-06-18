@@ -2,6 +2,10 @@
 
 $(document).ready(function() {
 
+    if (window.localStorage.getItem("NieuwOpSite") != "Nee") {
+        location.href='index.html'
+        window.localStorage.setItem("NieuwOpSite", "Nee");
+    }
 
     const app = new Vue({
         el: '#app',
@@ -11,13 +15,24 @@ $(document).ready(function() {
             showPopupForFase: null,
             openRequestDetail: false,
             requestId: null,
+            openDataVersturenId: null,
+            openDataVersturen: false,
             showContract: false,
+            showContractId: null,
+            openDataOntvangen: false,
+            openDataOntvangenRequestId: null,
+            openDataOntvangenContract: false,
+            openDataOntvangenContractRequestId: null,
+            highestRequestId:3,
             fases: [{
+                    id: 1,
                     name: "Definitiefase",
-                    requests: 
-                    [
-                    {
+                    requests: [{
                         id: 1,
+                        user: 2,
+                        origin_you: false,
+                        team: 1,
+                        status: 1,
                         title: "Back-end code gezipt.",
                         reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
                         forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
@@ -25,51 +40,101 @@ $(document).ready(function() {
                         team: 1,
                         filetypes: "ZIP",
                         date: '2020-06-25',
-                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test",
+                        hasContract: true,
                         contract: {
                             text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
                             is_signed: false
+                        },
+                        file: {
+                            url: 'whatever.jpg',
+                            name: 'Whatever',
+                            password: 'loltest',
+                            date: '2020-06-21'
                         }
                     }
                     ]
                 },
                 {
                     name: "Ontwerpfase",
-                    requests: 
-                    [
-                    {
+                    id: 2,
+                    requests: [{
                         id: 2,
-                        title: "Back-end code gezipt.",
+                        user: 4,
+                        origin_you: true,
+                        team: 2,
+                        status: 1,
+                        title: "Gegevens gebruikers",
                         reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
                         forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
-                        user: 2,
-                        team: 1,
-                        filetypes: "",
+                        filetypes: ".CSV",
                         date: '2020-06-25',
-                        description: "Zal worden gebruikt voor het achterhalen van de optimale locaties van stoplichten op drukke knooppunten test",
+                        hasContract: false,
                         contract: {
-                            text: 'Verboden te delen met personen buiten het project. De gegevens moeten veilig worden opgeslagen en niet openbaar op het internet staan zoals javascript. Er mogen geen persoongegevens zichtbaar zijn voor de testgebruikers',
+                            text: '',
                             is_signed: false
+                        },
+                        file: {
+                            url: 'whatever.jpg',
+                            name: 'Whatever',
+                            password: '',
+                            date: '2020-06-21'
                         }
                     }
                     ]
                 },
                 {
                     name: "Bouwfase",
-                    requests: 
-                    [
-             
+                    id: 3,
+                    requests: [{
+                        id: 3,
+                        user: 4,
+                        origin_you: true,
+                        team: 2,
+                        status: 1,
+                        title: "Gegevens gebruikers",
+                        reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
+                        forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
+                        filetypes: ".CSV",
+                        date: '2020-06-25',
+                        hasContract: false,
+                        contract: {
+                            text: '',
+                            is_signed: false
+                        },
+                        file: {
+                            url: 'whatever.jpg',
+                            name: 'Whatever',
+                            password: '',
+                            date: '2020-06-21'
+                        }
+                    }
                     ]
-                }
+                }         
             ],
             popupData: {
-                title: null,
+                id: 1,
                 user: 2,
-                team: "Team Ananas",
-                reason: null,
-                forWhat:null,
-                date: null,
-                filetypes: "PNG",
+                origin_you: false,
+                team: 1,
+                status: 1,
+                title: "",
+                reason: '',
+                forWhat: '',
+                user: 2,
+                team: 1,
+                filetypes: "ZIP",
+                date: '2020-06-25',
+                hasContract: false,
+                contract: {
+                    text: '',
+                    is_signed: false
+                },
+                file: {
+                    url: 'whatever.jpg',
+                    name: 'Whatever',
+                    password: 'loltest',
+                    date: '2020-06-21'
+                }
             },
             filetypes: [
                 '.PNG',
@@ -91,6 +156,11 @@ $(document).ready(function() {
                     id: 3,
                     name: 'Sven Henderickx',
                     team: 1
+                },
+                {
+                    id: 4,
+                    name: 'Robert Pasman',
+                    team: 2
                 }
             ],
             teams: [
@@ -113,6 +183,8 @@ $(document).ready(function() {
             },
             addRequest: function() {
                 const currentFase = this.fases.find(fase => fase.name === this.showPopupForFase);
+                this.highestRequestId++;
+                this.popupData.id = this.highestRequestId;
                 currentFase.requests.push(Object.assign({}, this.popupData));
                 this.showPopupForFase = null;
                 this.popupData.title = null;
@@ -227,6 +299,112 @@ $(document).ready(function() {
             function(){
                 return this.getContract(this.requestId);
             },
+            openDataOntvangenPopUp:
+            function(id){
+                this.openDataOntvangenRequestId = id;
+                this.openDataOntvangen = true;
+            },
+            closeDataOntvangenPopUp:
+            function(){
+                this.openDataOntvangenRequestId = null;
+                this.openDataOntvangen = false;
+            },
+            openDataOntvangenContractPopUp:
+            function(id){
+                this.openDataOntvangenContractRequestId = id;
+                this.openDataOntvangenContract = true;
+            },
+            closeDataOntvangenContractPopUp:
+            function(){
+                this.openDataOntvangenContractRequestId = null;
+                this.openDataOntvangenContract = false;
+            },
+            openDataVersturenPopUp:
+            function(requestId){
+                this.openDataVersturenId = requestId;
+                this.openDataVersturen = true;
+            },
+            closeDataVersturenPopUp:
+            function(requestId){
+                this.openDataVersturenId = null;
+                this.openDataVersturen = false;
+            },
+            showContractPopUp:
+            function(requestId){
+                this.showContract = true;
+                this.showContractId = requestId;
+            },
+            closeContractPopUp:
+            function(requestId){
+                this.showContract = false;
+                this.showContractId = null;
+            },
+            checkHasFaseBefore:
+            function(faseId){
+                return (this.fases.length <= (faseId + 1));
+            },
+            checkHasFaseNext:
+            function(faseId){
+                return (this.fases.length > faseId);
+            },
+            checkFaseDone:
+            function(faseId){
+                let count = 0;
+                let requestsC = 0;
+                $.each(this.fases, function(i,v){
+                    if(v.id == faseId){
+                        requestsC = v.requests.length;
+                        $.each(v.requests, function(ix, va){
+                            if(va.status >= 4){
+                                count++;
+                            }
+                        })
+                    }
+
+                })
+                return count >= requestsC;
+            },
+            returnFaseClasses:
+            function(faseId, direction){
+                console.log('test')
+                let classes = 'timeline_part '
+                if(direction == 'right' && this.checkHasFaseNext(faseId)){
+                    classes += ' ';
+
+                    if(this.checkFaseDone(faseId)){
+                        classes += 'done'
+                    }
+                    else{
+                        if(this.checkHasFaseBefore(faseId)){
+                            if(this.checkFaseDone(faseId - 1)){
+                                classes += 'next_not_done'
+                            }
+                            else{
+                                classes += 'not_done'
+                            }
+
+                        }
+                        else{
+                            classes += 'next_not_done'
+
+                        }
+                    }
+
+                }
+
+
+                if(direction == 'left' && this.checkHasFaseBefore(faseId)){
+                    classes += ' ';
+                    if(this.checkFaseDone(faseId - 1)){
+                        classes += 'done'
+                    }
+                    else{
+                        classes += 'not_done'
+                    }
+                }
+
+                return classes;
+            }
         }
     });
 
