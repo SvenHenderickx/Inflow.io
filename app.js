@@ -22,7 +22,8 @@ $(document).ready(function() {
             openDataOntvangenContract: false,
             openDataOntvangenContractRequestId: null,
             fases: [{
-                    name: "definitiefase",
+                    id: 1,
+                    name: "Definitiefase",
                     requests: [{
                         id: 1,
                         user: 2,
@@ -42,16 +43,45 @@ $(document).ready(function() {
                         file: {
                             url: 'whatever.jpg',
                             name: 'Whatever',
-                            password: '',
+                            password: 'loltest',
                             date: '2020-06-21'
                         }
                     }
                 ]
                 },
                 {
-                    name: "ontwerpfase",
+                    name: "Ontwerpfase",
+                    id: 2,
                     requests: [{
                         id: 2,
+                        user: 4,
+                        origin_you: true,
+                        team: 2,
+                        status: 1,
+                        title: "Gegevens gebruikers",
+                        reason: 'Dit willen we gebruiken om te onderzoeken hoe snel en veilig het is.',
+                        forWhat: 'Ze gaan deze code lokaal gebruiken en hier hun eigen tests mee doen. Deze code zal niet buiten de muren van het gebouw terecht komen en zal veilig gebruikt worden voor test doeleinden.',
+                        filetypes: ".CSV",
+                        date: '2020-06-25',
+                        hasContract: false,
+                        contract: {
+                            text: '',
+                            is_signed: false
+                        },
+                        file: {
+                            url: 'whatever.jpg',
+                            name: 'Whatever',
+                            password: '',
+                            date: '2020-06-21'
+                        }
+                    }
+                    ]
+                },
+                {
+                    name: "Bouwfase",
+                    id: 3,
+                    requests: [{
+                        id: 3,
                         user: 4,
                         origin_you: true,
                         team: 2,
@@ -267,6 +297,72 @@ $(document).ready(function() {
             function(requestId){
                 this.showContract = false;
                 this.showContractId = null;
+            },
+            checkHasFaseBefore:
+            function(faseId){
+                return (this.fases.length <= (faseId + 1));
+            },
+            checkHasFaseNext:
+            function(faseId){
+                return (this.fases.length > faseId);
+            },
+            checkFaseDone:
+            function(faseId){
+                let count = 0;
+                let requestsC = 0;
+                $.each(this.fases, function(i,v){
+                    if(v.id == faseId){
+                        requestsC = v.requests.length;
+                        $.each(v.requests, function(ix, va){
+                            if(va.status >= 4){
+                                count++;
+                            }
+                        })
+                    }
+
+                })
+                return count >= requestsC;
+            },
+            returnFaseClasses:
+            function(faseId, direction){
+                console.log('test')
+                let classes = 'timeline_part '
+                if(direction == 'right' && this.checkHasFaseNext(faseId)){
+                    classes += ' ';
+
+                    if(this.checkFaseDone(faseId)){
+                        classes += 'done'
+                    }
+                    else{
+                        if(this.checkHasFaseBefore(faseId)){
+                            if(this.checkFaseDone(faseId - 1)){
+                                classes += 'next_not_done'
+                            }
+                            else{
+                                classes += 'not_done'
+                            }
+
+                        }
+                        else{
+                            classes += 'next_not_done'
+
+                        }
+                    }
+
+                }
+
+
+                if(direction == 'left' && this.checkHasFaseBefore(faseId)){
+                    classes += ' ';
+                    if(this.checkFaseDone(faseId - 1)){
+                        classes += 'done'
+                    }
+                    else{
+                        classes += 'not_done'
+                    }
+                }
+
+                return classes;
             }
         }
     });

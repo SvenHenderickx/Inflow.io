@@ -32,9 +32,22 @@
 
 	<div id="app">
 
-		<div id="fases">
+		<div class="fases">
+			<!-- <div class="timeline_container">
+				<div class="timeline_part done">
+				</div>
+				<div class="timeline_part done">
+				</div>
+			</div> -->
 			<div v-for="fase in fases">
-				<p>{{ fase.name }}</p>
+				<h2 class="faseName">{{ fase.name }}</h2>
+
+				<div class="timeline_container">
+					<div v-if="checkHasFaseBefore(fase.id)" v-bind:class="returnFaseClasses(fase.id, 'left')" class="left">
+					</div>
+					<div v-if="checkHasFaseNext(fase.id)" v-bind:class="returnFaseClasses(fase.id, 'right')" class="right">
+					</div>
+				</div>
 				<div
 				v-for="request in fase.requests"
 				v-bind:key="request.id"
@@ -48,8 +61,22 @@
 					<!-- 	Actie bij mij kaarten -->
 
 				</template>
-				<div id="stap2">Nieuw stap</div>
-				<button id="aanvraagbtn" v-on:click="openPopup(fase.name)"> <span style="border-style: solid; padding:15px; border-radius: 10px;">DATA AANVRAAG TOEVOEGEN</span></button>
+				<!-- <div id="stap2">Nieuw stap</div>
+				<button id="aanvraagbtn" v-on:click="openPopup(fase.name)"> <span style="border-style: solid; padding:15px; border-radius: 10px;">DATA AANVRAAG TOEVOEGEN</span></button> -->
+
+				<div v-on:click="openPopup(fase.name)" class="request_tile stepAdd">
+					<div class="next_step_container">
+						<div class="toptext_container">
+							<p>Nieuwe stap</p>
+						</div>
+						<h1>Data aanvraag toevoegen</h1>
+						<!-- <div class="bottomtext_container">
+							<p v-if="origin_you && request.status < 4" class="">Actie bij jou</p>
+							<p v-if="!origin_you && request.status < 4" class="">Actie bij ander</p>
+							<p v-if="request.status == 4" class="">download bestand</p>
+						</div> -->
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -61,7 +88,7 @@
 		    is="contract"
 			class="popupbox">
 		    </div>
-		</div> -->
+		</div>
 
 		<!-- MODALS -->
 

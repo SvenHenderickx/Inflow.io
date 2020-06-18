@@ -2,11 +2,16 @@ const next_step = Vue.component('next_step', {
     props: ['currentStatus', 'origin_you', 'request'],
     template: `
     <div class="next_step">
-            <div id="afwachting3"> {{ getCurrentText() }}
-            <p v-if="origin_you && request.status < 4" id="actieVan3">Actie bij jou</p>
-            <p v-if="!origin_you && request.status < 4" id="actieVan3">Actie bij ander</p>
-            <p v-if="request.status == 4" id="actieVan3">download bestand</p>
-
+        <div class="next_step_container">
+            <div class="toptext_container">
+                <p>Huidige stap</p>
+            </div>
+            <h1> {{ getCurrentText() }}</h1>
+            <div class="bottomtext_container">
+                <p v-if="origin_you && request.status < 4" class="">Actie bij jou</p>
+                <p v-if="!origin_you && request.status < 4" class="">Actie bij ander</p>
+                <p v-if="request.status == 4" class="">download bestand</p>
+            </div>
         </div>
     </div>
     `,

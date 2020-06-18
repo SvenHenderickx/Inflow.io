@@ -49,7 +49,12 @@ const request_detail = Vue.component('request_detail', {
         },
         hasContract:
         function(){
-            return this.request.hasOwnProperty('contract');
+            if(this.request.contract.text.length > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
         },
         hasFilePreference:
         function(){

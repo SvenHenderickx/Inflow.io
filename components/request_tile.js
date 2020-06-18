@@ -1,7 +1,7 @@
 const request_tile = Vue.component('request_tile', {
     props: ['request'],
     template: `
-    <div id="card">
+    <div class="request_tile">
     <button class="buttonOpenPopUp" v-on:click="showPopUpRequestDetail(request.id)" > <i class="fas fa-external-link-square-alt"></i> </button>
         <div id="nameholder">
             <div id="circleID">{{ getUserInitials(request.user) }}</div>
